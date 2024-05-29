@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comedy Club Wheel and Gallery</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Image Gallery with Videos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Comedy Club Wheel and Gallery</h1>
-    
-    <div class="wheel-container" role="region" aria-label="Comedy Club Wheel Spinner">
-        <canvas id="wheelCanvas" width="500" height="500" aria-hidden="true"></canvas>
-        <div id="pointer" aria-hidden="true"></div>
-        <button id="spinButton" aria-live="polite">Spin the Wheel!</button>
-        <p id="result" aria-live="polite"></p>
-    </div>
+    <h1>Trending Comedians</h1>
+    <div id="imageContainer"></div>
 
-    <h2>Comedy Club Gallery</h2>
-    <div id="imageContainer" class="gallery"></div>
+    <!-- Modal for Video -->
     <div id="videoModal" class="modal">
-        <span class="close">&times;</span>
-        <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+            <div class="navigation-buttons">
+                <button id="prevBtn">Previous</button>
+                <button id="nextBtn">Next</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
