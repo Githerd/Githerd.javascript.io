@@ -6,79 +6,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comedy Club Wheel </title>
     <link rel="stylesheet" href="styles.css">
+    <script src="sticky.js"></script>
 </head>
 
 <body>
-
-    <h1>Comedy Club Tasks</h1>
-
-    <ol id="taskList">
-        <li>
-            <input type="checkbox" id="task1" class="task-checkbox">
-            <label for="task1">The Comedy Cellar</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task2" class="task-checkbox">
-            <label for="task2">The Laughter Lounge</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task3" class="task-checkbox">
-            <label for="task3">The International Comedy Club</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task4" class="task-checkbox">
-            <label for="task4">The Empire Comedy Club</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task5" class="task-checkbox">
-            <label for="task5">The Roisin Dubh Comedy Club</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task6" class="task-checkbox">
-            <label for="task6">The Bankers Comedy Club</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task7" class="task-checkbox">
-            <label for="task7">Cherry Comedy</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task8" class="task-checkbox">
-            <label for="task8">The Comedy Crunch</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task9" class="task-checkbox">
-            <label for="task9">The Empire Laughs Back</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        <li>
-            <input type="checkbox" id="task10" class="task-checkbox">
-            <label for="task10">Anseo Comedy Club</label>
-            <button class="delete-btn">Delete</button>
-        </li>
-        </ul>
-
-        <script src="task.js"></script>
-        <br>
-
-        <h1>Comedy Club Wheel</h1>
-
-        <div class="wheel-container" role="region" aria-label="Comedy Club Wheel Spinner">
-            <canvas id="wheelCanvas" width="500" height="500" aria-hidden="true"></canvas>
-            <div id="pointer" aria-hidden="true"></div>
-            <button id="spinButton" aria-live="polite">Spin</button>
-            <p id="result" aria-live="polite"></p>
+    <div class="header" id="header">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.jpg" alt="Logo" width="150">
+                </a>
+            </div>
+            <a href="spin.html">Content</a>
+            <a href="Login.html">Log In</a>
         </div>
+        <h1>Comedy Club Tasks</h1>
 
-        <script src="script.js"></script>
-        <script src="spin.js"></script>
+        <ol id="taskList">
+            <li>
+                <input type="checkbox" id="task1" class="task-checkbox">
+                <label for="task1">The Comedy Cellar</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task2" class="task-checkbox">
+                <label for="task2">The Laughter Lounge</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task3" class="task-checkbox">
+                <label for="task3">The International Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task4" class="task-checkbox">
+                <label for="task4">The Empire Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task5" class="task-checkbox">
+                <label for="task5">The Roisin Dubh Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task6" class="task-checkbox">
+                <label for="task6">The Bankers Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task7" class="task-checkbox">
+                <label for="task7">Cherry Comedy</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task8" class="task-checkbox">
+                <label for="task8">The Comedy Crunch</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task9" class="task-checkbox">
+                <label for="task9">The Empire Laughs Back</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task10" class="task-checkbox">
+                <label for="task10">Anseo Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            </ul>
+
+            <script src="task.js"></script>
+            <br>
+
+            <h1>Comedy Club Wheel</h1>
+
+            <div class="wheel-container" role="region" aria-label="Comedy Club Wheel Spinner">
+                <canvas id="wheelCanvas" width="500" height="500" aria-hidden="true"></canvas>
+                <div id="pointer" aria-hidden="true"></div>
+                <button id="spinButton" aria-live="polite">Spin</button>
+                <p id="result" aria-live="polite"></p>
+            </div>
+
+            <script src="script.js"></script>
+            <script src="spin.js"></script>
 </body>
 
 </html>

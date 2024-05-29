@@ -288,3 +288,64 @@ input[type="submit"]:hover {
     border: 2px solid #ccc;
     border-radius: 4px;
 }
+.navbar {
+    background-color: #fff;
+    overflow: hidden;
+    text-align: center;
+}
+
+.navbar a {
+    display: inline-block;
+    color: #000;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: rgb(81, 206, 229);
+}
+
+ul {
+    list-style-type: none
+}
+
+a:link {
+    color: black
+}
+
+a:hover {
+    background-color: rgb(133, 178, 227);
+    color: #fff;
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgb(150, 68, 38);
+}
+
+.header {
+    background-color: #fff;
+    color: #fff;
+    padding: 1px 2px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+.header.sticky {
+    top: -10px;
+    background-color: #fff;
+
+}
+.logo {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 0;
+  top: 0.1%;
+  transform: translateY(-100%);
+  z-index: 100;
+}
