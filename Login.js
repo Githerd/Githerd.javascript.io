@@ -20,3 +20,4 @@ document.addEventListener('DOMContentLoaded', () => {
             resultDiv.style.display = 'block';
         }
     });
+    });
