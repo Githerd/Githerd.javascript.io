@@ -36,7 +36,7 @@ This file contains styles for the web page. Key styles include:
 - Centering elements and setting background colors.
 
 ## script.js
-- ** This file contains all the JavaScript functionality, including: **
+** This file contains all the JavaScript functionality, including: **
 
 - Event listeners for opening the image modal, spinning the wheel, and handling form submission.
 - Functions for DOM manipulation and event handling.
