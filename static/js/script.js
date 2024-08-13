@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+    // Comedy Club Wheel of Fortune
     const comedyClubs = [
         "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
         "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
@@ -36,6 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
             ctx.restore();
         }
+        // Draw the pointer
+        drawPointer();
+    }
+
+    function drawPointer() {
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2 - 10, 0);
+        ctx.lineTo(canvas.width / 2 + 10, 0);
+        ctx.lineTo(canvas.width / 2, 30);
+        ctx.fillStyle = "red";
+        ctx.fill();
     }
 
     function getColor(item, maxitem) {
@@ -99,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     drawWheel();
 
-  
+    // Task List Management
     const taskList = document.getElementById('taskList');
 
     taskList.addEventListener('change', (event) => {
@@ -116,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-   
+    // Image Gallery and Modal Handling
     const images = [
         { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
         { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
@@ -206,12 +218,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Form Validation and Submission Handling
     const form = document.getElementById('myForm');
     const resultDiv = document.getElementById('result');
 
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
+    }
+
+    function isValidPassword(password) {
+        // Password should be at least 8 characters long and include at least one number, one uppercase letter, and one special character
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+        return passwordRegex.test(password);
     }
 
     form.addEventListener('submit', function(event) {
@@ -221,12 +240,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        if (name && isValidEmail(email) && password) {
+        if (name && isValidEmail(email) && isValidPassword(password)) {
             resultDiv.innerHTML = `<p>Thank you for signing up, ${name}!</p>`;
             resultDiv.style.display = 'block';
             form.reset();
         } else {
-            resultDiv.innerHTML = `<p>Please fill in all fields correctly.</p>`;
+            let errorMessage = 'Please fill in all fields correctly.';
+            if (!isValidEmail(email)) {
+                errorMessage += '<br>Email format is invalid.';
+            }
+            if (!isValidPassword(password)) {
+                errorMessage += '<br>Password must be at least 8 characters long, include one uppercase letter, one number, and one special character.';
+            }
+            resultDiv.innerHTML = `<p>${errorMessage}</p>`;
             resultDiv.style.display = 'block';
         }
     });
