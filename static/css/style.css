@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -6,15 +7,18 @@ body {
     padding: 20px;
 }
 
+
 header {
     font-size: 36px;
     margin-bottom: 20px;
     text-align: center;
 }
 
+
 h1, h2 {
     margin-bottom: 20px;
 }
+
 
 .wheel-container {
     position: relative;
@@ -22,9 +26,11 @@ h1, h2 {
     margin-top: 50px;
 }
 
+
 canvas {
     border: 5px solid #000;
 }
+
 
 #pointer {
     position: absolute;
@@ -38,6 +44,7 @@ canvas {
     transform: translate(-50%, -100%);
 }
 
+
 #spinButton {
     position: absolute;
     top: 40%;
@@ -48,11 +55,13 @@ canvas {
     cursor: pointer;
 }
 
+
 p {
     font-size: 18px;
     font-weight: bold;
     margin-top: 20px;
 }
+
 
 button {
     margin-top: 20px;
@@ -61,10 +70,12 @@ button {
     cursor: pointer;
 }
 
+
 ul {
     list-style-type: none;
     padding: 0;
 }
+
 
 li {
     display: flex;
@@ -76,9 +87,11 @@ li {
     border-radius: 4px;
 }
 
+
 .task-checkbox {
     margin-right: 10px;
 }
+
 
 label {
     flex-grow: 1;
@@ -86,6 +99,7 @@ label {
     margin-bottom: 8px;
     color: #555;
 }
+
 
 .delete-btn {
     background-color: #ff4d4d;
@@ -96,13 +110,16 @@ label {
     border-radius: 4px;
 }
 
+
 .delete-btn:hover {
     background-color: #ff1a1a;
 }
 
+
 .checked label {
     text-decoration: line-through;
 }
+
 
 .gallery {
     display: flex;
@@ -112,12 +129,14 @@ label {
     margin-top: 20px;
 }
 
+
 .gallery img {
     cursor: pointer;
     max-width: 150px;
     border: 2px solid #000;
     border-radius: 5px;
 }
+
 
 .modal {
     display: none;
@@ -132,6 +151,7 @@ label {
     padding-top: 60px;
 }
 
+
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
@@ -141,6 +161,7 @@ label {
     text-align: center;
 }
 
+
 .close {
     color: #aaa;
     float: right;
@@ -148,12 +169,14 @@ label {
     font-weight: bold;
 }
 
+
 .close:hover,
 .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
+
 
 .navigation-buttons {
     margin-top: 20px;
@@ -166,17 +189,20 @@ label {
     cursor: pointer;
 }
 
+
 iframe {
     display: block;
     margin: auto;
     margin-top: 50px;
 }
 
+
 .balloon-container {
     position: relative;
     width: 100px;
     height: 300px;
 }
+
 
 .balloon {
     position: absolute;
@@ -195,6 +221,7 @@ iframe {
     animation: float 4s ease-in-out infinite;
 }
 
+
 .string {
     position: absolute;
     bottom: -150px;
@@ -202,6 +229,7 @@ iframe {
     height: 150px;
     background: #000;
 }
+
 
 @keyframes float {
     0% {
@@ -217,6 +245,7 @@ iframe {
     }
 }
 
+
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -225,6 +254,7 @@ form {
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 input[type="text"],
 input[type="email"],
@@ -235,6 +265,7 @@ input[type="password"] {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 
 input[type="submit"] {
     width: 100%;
@@ -247,9 +278,11 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
 
 #result {
     max-width: 400px;
@@ -262,12 +295,14 @@ input[type="submit"]:hover {
     text-align: center;
 }
 
+
 #imageContainer img {
     margin: 10px;
     cursor: pointer;
     border: 2px solid #ccc;
     border-radius: 4px;
 }
+
 
 a:link,
 a:visited {
@@ -280,6 +315,7 @@ a:hover {
     text-decoration: none;
 }
 
+
 .header {
     background-color: #fff;
     padding: 10px 20px;
@@ -291,16 +327,19 @@ a:hover {
     transition: top 0.3s ease;
 }
 
+
 .logo {
     width: 48px;
     height: 48px;
 }
+
 
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
 
 .flip-card {
     background-color: transparent;
@@ -323,6 +362,7 @@ a:hover {
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
+
 
 .flip-card-front,
 .flip-card-back {
@@ -356,6 +396,7 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
+
 .modal .close {
     position: absolute;
     top: 15px;
@@ -373,10 +414,12 @@ a:hover {
     cursor: pointer;
 }
 
+
 .modal iframe {
     display: block;
     margin: 0 auto;
 }
+
 
 #prevBtn,
 #nextBtn {
@@ -393,7 +436,7 @@ a:hover {
     background-color: #ddd;
 }
 
-/* Navigation Bar */
+
 .navbar {
     background-color: #007BFF;
     overflow: hidden;
@@ -428,6 +471,7 @@ a:hover {
     display: flex;
     align-items: center;
 }
+
 
 @media screen and (max-width: 600px) {
     .navbar a {
