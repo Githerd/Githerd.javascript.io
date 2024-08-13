@@ -20,6 +20,8 @@ const arc = Math.PI / (comedyClubs.length / 2);
 let spinAngleStart = 10;
 let spinTime = 0;
 let spinTimeTotal = 0;
+let startAngle = 0;
+let spinTimeout;
 
 function drawWheel() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -102,8 +104,8 @@ spinButton.addEventListener('click', () => {
     rotateWheel();
 });
 
-let startAngle = 0;
 drawWheel();
+
 document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.getElementById('taskList');
 

@@ -7,14 +7,12 @@ body {
 }
 
 header {
-    font-family: Arial, sans-serif;
     font-size: 36px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-h1,
-h2 {
+h1, h2 {
     margin-bottom: 20px;
 }
 
@@ -84,6 +82,9 @@ li {
 
 label {
     flex-grow: 1;
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
 }
 
 .delete-btn {
@@ -127,7 +128,6 @@ label {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
 }
@@ -154,6 +154,7 @@ label {
     text-decoration: none;
     cursor: pointer;
 }
+
 .navigation-buttons {
     margin-top: 20px;
 }
@@ -169,16 +170,6 @@ iframe {
     display: block;
     margin: auto;
     margin-top: 50px;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f0f8ff;
-    margin: 0;
-    font-family: Arial, sans-serif;
 }
 
 .balloon-container {
@@ -226,12 +217,6 @@ body {
     }
 }
 
-
-h1 {
-    text-align: Centre;
-    color: #333;
-}
-
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -239,12 +224,6 @@ form {
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
 }
 
 input[type="text"],
@@ -282,36 +261,17 @@ input[type="submit"]:hover {
     display: none;
     text-align: center;
 }
+
 #imageContainer img {
     margin: 10px;
     cursor: pointer;
     border: 2px solid #ccc;
     border-radius: 4px;
 }
-.navbar {
-    background-color: #fff;
-    overflow: hidden;
-    text-align: center;
-}
 
-.navbar a {
-    display: inline-block;
-    color: #000;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-.navbar a:hover {
-    background-color: rgb(81, 206, 229);
-}
-
-ul {
-    list-style-type: none
-}
-
-a:link {
-    color: black
+a:link,
+a:visited {
+    color: black;
 }
 
 a:hover {
@@ -320,60 +280,20 @@ a:hover {
     text-decoration: none;
 }
 
-a:visited {
-    color: rgb(150, 68, 38);
-}
-
 .header {
     background-color: #fff;
-    color: #fff;
-    padding: 1px 2px;
+    padding: 10px 20px;
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: top 0.3s ease;
 }
 
-.header.sticky {
-    top: -10px;
-    background-color: #fff;
-
-}
 .logo {
     width: 48px;
     height: 48px;
-    position: absolute;
-    left: 0;
-    top: 0.1%;
-    transform: translateY(-100%);
-    z-index: 100;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-}
-
-.logo {
-    text-align: center;
-    font-size: 2em;
-    margin: 20px 0;
-}
-
-.image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.body {
-    font-family: Arial, sans-serif;
-}
-
-.logo {
-    text-align: center;
-    font-size: 2em;
-    margin: 20px 0;
 }
 
 .image-gallery {
@@ -404,12 +324,12 @@ a:visited {
     transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 .flip-card-front {
@@ -420,7 +340,7 @@ a:visited {
     background: #ddd;
     transform: rotateY(180deg);
     padding: 20px;
-    overflow-y: auto;  /* Make the back side scrollable */
+    overflow-y: auto;
 }
 
 .modal {
@@ -433,7 +353,6 @@ a:visited {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.9);
 }
 
@@ -459,7 +378,8 @@ a:visited {
     margin: 0 auto;
 }
 
-#prevBtn, #nextBtn {
+#prevBtn,
+#nextBtn {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
@@ -468,6 +388,52 @@ a:visited {
     cursor: pointer;
 }
 
-#prevBtn:hover, #nextBtn:hover {
+#prevBtn:hover,
+#nextBtn:hover {
     background-color: #ddd;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #007BFF;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+.navbar .logo img {
+    float: left;
+    margin-right: 10px;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar a {
+        float: none;
+        display: block;
+        text-align: left;
+        padding-left: 10px;
+    }
 }

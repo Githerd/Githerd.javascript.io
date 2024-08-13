@@ -3,21 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultDiv = document.getElementById('result');
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent form from submitting the default way
+        event.preventDefault(); 
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
 
-        // Simple validation
+        
         if (name && email && password) {
-            // Display success message
+        
             resultDiv.innerHTML = `<p>Thank you for signing up, ${name}!</p>`;
             resultDiv.style.display = 'block';
+            form.reset(); 
         } else {
-            // Display error message
+          
             resultDiv.innerHTML = `<p>Please fill in all fields correctly.</p>`;
             resultDiv.style.display = 'block';
         }
     });
-    });
+});

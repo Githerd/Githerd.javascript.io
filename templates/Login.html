@@ -1,47 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="header" id="header">
-        <div class="navbar">
+    <header class="header" id="header">
+        <nav class="navbar">
             <div class="logo">
                 <a href="index.html">
                     <img src="logo.jpg" alt="Logo" width="150">
                 </a>
             </div>
+            <a href="index.html">Home</a>
             <a href="spin.html">Spin</a>
-        </div>
-<div class="content">
-            <div id="content"></div>
+            <a href="login.html">Log In</a>
+        </nav>
+    </header>
 
-            <div class="navbar">
-                <div class="logo"></div>
+    <main class="content">
         <h1>Log In Now</h1>
 
-        <form action="balloon.html" method="post">
-            <form id="myForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required><br>
+        <form action="balloon.html" method="post" id="myForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
 
-                <input type="submit" value="Submit">
+            <input type="submit" value="Submit">
+        </form>
 
-            </form>
+        <div id="result"></div>
+    </main>
 
-            <div id="result"></div>
-
-            <script src="Login.js"></script>
-            <script src="balloon.js"></script>
+    <script src="Login.js"></script>
+    <script src="balloon.js"></script>
 </body>
 
 </html>

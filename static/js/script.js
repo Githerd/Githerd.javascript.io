@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function() {
         { src: "Graham-Norton.jpg", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
         { src: "Aisling-Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/embed/YLU6m1D_uWs", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
         { src: "David-O-Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/embed/3YI7VIwLmCM", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
-        { src: "Ardal-O-Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/embed/H8-AZ5ri6H8", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." }
+        { src: "Ardal-O-Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/embed/H8-AZ5ri6H8", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
+        { src: "Ed-Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=Doz9BpXMUXI", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
     ];
 
     let currentIndex = 0;
-
     const container = document.getElementById('imageContainer');
     const modal = document.getElementById('videoModal');
     const videoFrame = document.getElementById('videoFrame');
@@ -53,33 +53,30 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    closeBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-
-    prevBtn.addEventListener('click', showPrevious);
-    nextBtn.addEventListener('click', showNext);
-
     function openModal() {
         videoFrame.src = images[currentIndex].video;
         modal.style.display = 'block';
     }
 
-    function closeModal() {
+    closeBtn.addEventListener('click', function() {
         modal.style.display = 'none';
         videoFrame.src = '';
-    }
+    });
 
-    function showPrevious() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        videoFrame.src = images[currentIndex].video;
-    }
+    prevBtn.addEventListener('click', function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+        openModal();
+    });
 
-    function showNext() {
-        currentIndex = (currentIndex + 1) % images.length;
-        videoFrame.src = images[currentIndex].video;
-    }
+    nextBtn.addEventListener('click', function() {
+        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+        openModal();
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            videoFrame.src = '';
+        }
+    });
 });

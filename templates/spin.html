@@ -4,26 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comedy Club Wheel </title>
+    <title>Comedy Club Wheel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="header" id="header">
-        <div class="navbar">
+    <header class="header" id="header">
+        <nav class="navbar">
             <div class="logo">
                 <a href="index.html">
                     <img src="logo.jpg" alt="Logo" width="150">
                 </a>
             </div>
+            <a href="index.html">Home</a>
             <a href="spin.html">Spin</a>
-            <a href="Login.html">Log In</a>
-        </div>
-<div class="content">
-            <div id="content"></div>
+            <a href="login.html">Log In</a>
+        </nav>
+    </header>
 
-            <div class="navbar">
-                <div class="logo"></div>
+    <main class="content">
         <h1>Comedy Club Tasks</h1>
 
         <ol id="taskList">
@@ -77,20 +76,21 @@
                 <label for="task10">Anseo Comedy Club</label>
                 <button class="delete-btn">Delete</button>
             </li>
-            </ul>
+        </ol>
 
-            <br>
+        <br>
 
-            <h1>Comedy Club Wheel</h1>
+        <h1>Comedy Club Wheel</h1>
 
-            <div class="wheel-container" role="region" aria-label="Comedy Club Wheel Spinner">
-                <canvas id="wheelCanvas" width="500" height="500" aria-hidden="true"></canvas>
-                <div id="pointer" aria-hidden="true"></div>
-                <button id="spinButton" aria-live="polite">Spin</button>
-                <p id="result" aria-live="polite"></p>
-            </div>
+        <div class="wheel-container" role="region" aria-label="Comedy Club Wheel Spinner">
+            <canvas id="wheelCanvas" width="500" height="500" aria-hidden="true"></canvas>
+            <div id="pointer" aria-hidden="true"></div>
+            <button id="spinButton" aria-live="polite">Spin</button>
+            <p id="result" aria-live="polite"></p>
+        </div>
+    </main>
 
-            <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
