@@ -41,7 +41,7 @@ canvas {
 }
 
 #spinButton {
-    position: relative; /* Changed to relative to prevent positioning issues */
+    position: relative;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -126,7 +126,7 @@ label {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1001; /* Ensure it's above other elements */
+    z-index: 1001;
     left: 0;
     top: 0;
     width: 100%;
@@ -430,7 +430,7 @@ a:hover {
     font-size: 17px;
     flex: 1;
     text-align: left;
-    max-width: 150px; /* Added to prevent links from stretching unevenly */
+    max-width: 150px;
 }
 
 .navbar a:hover {
