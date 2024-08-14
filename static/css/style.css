@@ -24,7 +24,7 @@ h1, h2 {
 
 canvas {
     border: 5px solid #000;
-    max-width: 100%; 
+    max-width: 100%;
 }
 
 #pointer {
@@ -41,7 +41,7 @@ canvas {
 }
 
 #spinButton {
-    position: absolute;
+    position: relative; /* Changed to relative to prevent positioning issues */
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -126,7 +126,7 @@ label {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1001; /* Ensure it's above other elements */
     left: 0;
     top: 0;
     width: 100%;
@@ -308,8 +308,8 @@ a:hover {
 
 .flip-card {
     background-color: transparent;
-    width: 100%; 
-    height: auto; 
+    width: 100%;
+    height: auto;
     perspective: 1000px;
     margin: 10px;
     cursor: pointer;
@@ -340,7 +340,7 @@ a:hover {
     background: #fff;
 }
 
-flip-card-back {
+.flip-card-back {
     background: #ddd;
     transform: rotateY(180deg);
     padding: 20px;
@@ -350,7 +350,7 @@ flip-card-back {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1001;
     padding-top: 60px;
     left: 0;
     top: 0;
@@ -406,16 +406,31 @@ flip-card-back {
     width: 100%;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.navbar .logo img {
+    vertical-align: middle;
+    height: 48px;
+    width: 48px;
 }
 
 .navbar a {
-    float: left;
-    display: block;
     color: #fff;
-    text-align: center;
+    text-align: left;
     padding: 14px 20px;
     text-decoration: none;
     font-size: 17px;
+    flex: 1;
+    text-align: left;
+    max-width: 150px; /* Added to prevent links from stretching unevenly */
 }
 
 .navbar a:hover {
@@ -423,62 +438,28 @@ flip-card-back {
     color: #fff;
 }
 
-.navbar .logo img {
-    float: left;
-    margin-right: 10px;
-}
-
-.navbar .logo {
-    display: flex;
-    align-items: center;
-}
-
 @media screen and (max-width: 1024px) {
-     /* Adjustments for tablets */
-    header {
-        font-size: 32px;
-    }
-    .wheel-container {
-        margin-top: 30px;
-    }
-    canvas {
-        width: 90%;
-        height: auto;
-    }
     .navbar a {
-        padding: 10px 15px;
         font-size: 15px;
-    }
-    #spinButton {
-        top: 70%;
+        padding: 10px 15px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    /* Adjustments for mobile phones */
-    header {
-        font-size: 28px;
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .wheel-container {
-        margin-top: 20px;
-    }
-    canvas {
-        width: 100%;
-        height: auto;
-    }
+
     .navbar a {
         float: none;
         display: block;
         text-align: left;
         padding: 10px 15px;
-    }
-    #spinButton {
-        top: 75%;
-    }
-    form {
-        padding: 20px;
-    }
-    .flip-card {
         width: 100%;
+    }
+
+    .navbar .logo {
+        margin-bottom: 10px;
     }
 }
