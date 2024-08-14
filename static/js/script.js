@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Comedy Club Wheel of Fortune
     const comedyClubs = [
         "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
         "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
             ctx.restore();
         }
-        
+        // Draw the pointer
         drawPointer();
     }
 
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     drawWheel();
 
+    // Task List Management
     const taskList = document.getElementById('taskList');
 
     taskList.addEventListener('change', (event) => {
@@ -125,14 +127,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Image Gallery and Modal Handling
     const images = [
         { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
         { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
         { src: "Graham-Norton.jpg", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
-        { src: "Aisling-Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/embed/YLU6m1D_uWs", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
-        { src: "David-O-Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/embed/3YI7VIwLmCM", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
-        { src: "Ardal-O-Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/embed/H8-AZ5ri6H8", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
-        { src: "Ed-Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=Doz9BpXMUXI", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
+        { src: "Aisling-Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/watch?v=DAiIUbSt-eM&pp", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
+        { src: "David-O-Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/watch?v=TRHS0pN6oC0", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
+        { src: "Ardal-O-Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/watch?v=6B--cjte5P4&pp=y", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
+        { src: "Ed-Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=8gxb4e6gInU&pp=ygURZWQgYnlybmU", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
     ];
 
     let currentIndex = 0;
@@ -214,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Form Validation and Submission Handling
     const form = document.getElementById('myForm');
     const resultDiv = document.getElementById('result');
 
@@ -223,7 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function isValidPassword(password) {
-        
+        // Password should be at least 8 characters long and include at least one number, one uppercase letter, and one special character
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
         return passwordRegex.test(password);
     }
 
