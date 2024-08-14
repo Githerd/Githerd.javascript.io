@@ -463,3 +463,59 @@ a:hover {
         margin-bottom: 10px;
     }
 }
+
+.featured-comedian {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: left;
+}
+
+.featured-comedian h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.comedian-profile {
+    display: flex;
+    align-items: center;
+}
+
+.comedian-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 3px solid #007BFF;
+}
+
+.comedian-details {
+    flex: 1;
+}
+
+.comedian-details h3 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+.comedian-details p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.watch-video-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.watch-video-button:hover {
+    background-color: #0056b3;
+}

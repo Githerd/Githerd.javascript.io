@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Comedy Club Wheel of Fortune
+    
     const comedyClubs = [
         "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
         "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
             ctx.restore();
         }
-        // Draw the pointer
+        
         drawPointer();
     }
 
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     drawWheel();
 
-    // Task List Management
+  
     const taskList = document.getElementById('taskList');
 
     taskList.addEventListener('change', (event) => {
@@ -127,7 +127,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Image Gallery and Modal Handling
+    
+        
+        const featuredComedian = comedians[Math.floor(Math.random() * comedians.length)];
+    
+       
+        document.getElementById('featured-image').src = featuredComedian.src;
+        document.getElementById('featured-image').alt = featuredComedian.alt;
+        document.getElementById('featured-name').textContent = featuredComedian.alt;
+        document.getElementById('featured-bio').textContent = featuredComedian.bio;
+    
+       
+        document.getElementById('watch-video-button').addEventListener('click', () => {
+            const videoModal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            videoFrame.src = featuredComedian.video;
+            videoModal.style.display = 'block';
+        });
+    });
     const images = [
         { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
         { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
@@ -217,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form Validation and Submission Handling
+  
     const form = document.getElementById('myForm');
     const resultDiv = document.getElementById('result');
 
@@ -227,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function isValidPassword(password) {
-        // Password should be at least 8 characters long and include at least one number, one uppercase letter, and one special character
+        
         const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
         return passwordRegex.test(password);
     }
