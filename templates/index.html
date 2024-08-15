@@ -22,41 +22,93 @@
         </div>
     </header>
 
-    <main class="content">
-        <section class="featured-comedians">
-            <h1>Featured Comedians</h1>
-            <div id="imageContainer" class="image-gallery"></div>
-
-            <div id="videoModal" class="modal">
-                <span class="close">&times;</span>
-                <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-                <div class="navigation-buttons">
-                    <button id="prevBtn">Previous</button>
-                    <button id="nextBtn">Next</button>
-                </div>
+    <section>
+        <div id="imageContainer" class="image-gallery"></div>
+        
+        <h2>Featured Comedians</h2>
+        
+        <div class="comedian-profile">
+            <img src="daraobriain.jpg" alt="Dara Ó Briain" class="comedian-image">
+            <div class="comedian-details">
+                <h3>Dara Ó Briain</h3>
+                <p>Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect.</p>
+                <button class="watch-video-button">Watch Video</button>
             </div>
-        </section>
+        </div>
+    
+        <div class="comedian-profile">
+            <img src="tommytiernan.jpg" alt="Tommy Tiernan" class="comedian-image">
+            <div class="comedian-details">
+                <h3>Tommy Tiernan</h3>
+                <p>Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style.</p>
+                <button class="watch-video-button">Watch Video</button>
+            </div>
+        </div>
+    
+        <div class="comedian-profile">
+            <img src="grahamnorton.jpg" alt="Graham Norton" class="comedian-image">
+            <div class="comedian-details">
+                <h3>Graham Norton</h3>
+                <p>Graham Norton is an Irish television and radio presenter, known for his popular talk show.</p>
+                <button class="watch-video-button">Watch Video</button>
+            </div>
+        </div>
+    
+        <div class="comedian-profile">
+            <img src="aislingbea.jpg" alt="Aisling Bea" class="comedian-image">
+            <div class="comedian-details">
+                <h3>Aisling Bea</h3>
+                <p>Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills.</p>
+                <button class="watch-video-button">Watch Video</button>
+            </div>
+        </div>
+    
+        <div class="comedian-profile">
+            <img src="davido-doherty.jpg" alt="David O'Doherty" class="comedian-image">
+            <div class="comedian-details">
+                <h3>David O'Doherty</h3>
+                <p>David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy.</p>
+                <button class="watch-video-button">Watch Video</button>
+            </div>
+        </div>
+    
+        <div class="comedian-profile">
+            <img src="ardalohanlon.jpg" alt="Ardal O'Hanlon" class="comedian-image">
+            <div class="comedian-details">
+                <h3>Ardal O'Hanlon</h3>
+                <p>Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted.</p>
+                <button class="watch-video-button">Watch Video</button>
+            </div>
+        </div>
+    
+        <div class="comedian-profile">
+            <img src="edbyrne.jpg" alt="Ed Byrne" class="comedian-image">
+            <div class="comedian-details">
+                <h3>Ed Byrne</h3>
+                <p>Ed Byrne is a comedian and actor known for his observational humor.</p>
+                <button class="watch-video-button">Watch Video</button>
+            </div>
+        </div>
+    
+        <div id="videoModal" class="modal" title="Video Playback Modal">
+            <span class="close" title="Close">&times;</span>
+            <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen title="Video Frame"></iframe>
+            <div class="modal-navigation">
+                <button id="prevBtn" title="Watch Previous Video">Previous</button>
+                <button id="nextBtn" title="Watch Next Video">Next</button>
+            </div>
+        </div>            
+    </section>
 
-        <section class="post-review">
-            <h1>Post a Review</h1>
-            <form action="balloon.html" method="post" id="reviewForm">
-                <label for="showId">Comedian's Name:</label>
-                <input type="text" id="showId" name="showId" required><br>
+    <div>
+        <button onclick="backToTop()" id="back-to-top">Back to Top</button>
+    </div>
 
-                <label for="reviewer">Your Name:</label>
-                <input type="text" id="reviewer" name="reviewer" required><br>
+    <footer>
+        <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
+    </footer>
 
-                <label for="rating">Rating:</label>
-                <input type="number" id="rating" name="rating" min="1" max="5" required><br>
+    <script src="scripts.js"></script>
 
-                <label for="comment">Comment:</label>
-                <textarea id="comment" name="comment" required></textarea><br>
-
-                <input type="submit" value="Submit Review">
-            </form>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
 </body>
 </html>

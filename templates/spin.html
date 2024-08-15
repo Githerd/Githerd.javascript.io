@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comedy Club Wheel</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Comedy Club Tasks and Wheel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <img src="logo.jpg" alt="Logo" width="48" height="48">
-            </a>
-        </div>
-        <a href="index.html">Home</a>
-        <a href="spin.html">Spin the Wheel</a>
-        <a href="login.html">Login</a>
-    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-item">
+            <img src="logo.jpg" alt="Comedy Club Logo" width="48" height="48">
+        </a>
+        <a href="index.html" class="navbar-item">Comedians</a>
+        <a href="clubs.html" class="navbar-item">Visit us</a>
+        <a href="contact.html" class="navbar-item">Contact Me</a>
+        <a href="spin.html" class="navbar-item">Spin</a>
+        <a href="login.html" class="navbar-item">Log In</a>
+        <a href="register.html" class="navbar-item">Register Now</a>
+    </nav>
 
     <main class="content">
         <h1>Comedy Club Tasks</h1>
@@ -88,7 +88,15 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <div>
+        <button onclick="backToTop()" id="back-to-top">Back to Top</button>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="scripts.js"></script>
+    
 </body>
-
 </html>
