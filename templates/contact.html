@@ -22,6 +22,33 @@
         </div>
     </header>
 
+    <form action="balloon.html" method="post">
+        <fieldset>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="Choose">How do you feel about the page?</label>
+            <select id="Choose" name="Choose">
+                <option value="I love it">I love it</option>
+                <option value="I like it">I like it</option>
+                <option value="Not for me">Not for me</option>
+                <option value="Could be better">Could be better</option>
+                <option value="Not another page about comedy">Not another page about comedy</option>
+                <option value="Nope, I'm out">Nope, I'm out</option>
+            </select>
+            <br><br>
+
+            <label for="comment">Comment (max 1600 characters):</label><br>
+            <textarea id="comment" name="comment" rows="5" maxlength="1600" required></textarea><br><br>
+
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+</section>
+
     <section>
         <div class="container">
             <h1>Request Call Back</h1>

@@ -326,3 +326,40 @@ footer {
         margin-bottom: 10px;
     }
 }
+
+.auth-links a {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.confirmation-message {
+    display: none;
+    color: green;
+    font-weight: bold;
+}
+
+.error-page {
+    text-align: center;
+    padding: 50px;
+}
+
+.error-page h1 {
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+
+.error-page p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.error-page a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.error-page a:hover {
+    text-decoration: underline;
+}
+

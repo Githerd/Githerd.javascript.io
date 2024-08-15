@@ -257,4 +257,30 @@ document.addEventListener('DOMContentLoaded', () => {
             resultDiv.style.display = 'block';
         }
     });
+
+    const form = document.getElementById('balloon-form');
+    const confirmationMessage = document.getElementById('confirmation');
+    const loginLink = document.getElementById('login-link');
+    const registerLink = document.getElementById('register-link');
+    const logoutLink = document.getElementById('logout-link');
+
+    
+    const userLoggedIn = true; 
+
+    if (userLoggedIn) {
+        loginLink.style.display = 'none';
+        registerLink.style.display = 'none';
+        logoutLink.style.display = 'inline-block';
+    } else {
+        loginLink.style.display = 'inline-block';
+        registerLink.style.display = 'inline-block';
+        logoutLink.style.display = 'none';
+    }
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        confirmationMessage.textContent = 'Your message has been sent!';
+        confirmationMessage.style.display = 'block';
+        form.reset();
+    });
 });
