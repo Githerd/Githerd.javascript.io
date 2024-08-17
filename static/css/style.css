@@ -17,7 +17,6 @@ p {
     color: #555;
 }
 
-
 .navbar {
     background-color: #007BFF;
     padding: 10px 20px;
@@ -25,6 +24,7 @@ p {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 
 .navbar a {
@@ -32,6 +32,8 @@ p {
     text-decoration: none;
     padding: 8px 16px;
     transition: background-color 0.3s ease;
+    flex: 1;
+    text-align: center;
 }
 
 .navbar a:hover {
@@ -42,7 +44,6 @@ p {
     display: block;
     height: auto;
 }
-
 
 .container {
     max-width: 1200px;
@@ -60,7 +61,6 @@ section {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -70,7 +70,8 @@ section {
 
 .flip-card {
     background-color: transparent;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 400px;
     perspective: 1000px;
     margin: 10px;
@@ -115,7 +116,6 @@ section {
     padding: 20px;
     border: 1px solid #ddd;
 }
-
 
 .comedian-profile {
     display: flex;
@@ -208,7 +208,6 @@ section {
     background-color: #0056b3;
 }
 
-
 .wheel-container {
     position: relative;
     display: inline-block;
@@ -245,10 +244,10 @@ canvas {
     z-index: 1000;
 }
 
-
 #back-to-top {
-    display: block;
-    margin: 20px auto;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
     padding: 10px 20px;
     background-color: #007BFF;
     border: none;
@@ -256,12 +255,12 @@ canvas {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    z-index: 1000;
 }
 
 #back-to-top:hover {
     background-color: #0056b3;
 }
-
 
 footer {
     text-align: center;
@@ -269,11 +268,9 @@ footer {
     background-color: #007BFF;
     color: white;
     position: relative;
-    bottom: 0;
     width: 100%;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 @media screen and (max-width: 1024px) {
     .navbar a {
@@ -326,40 +323,3 @@ footer {
         margin-bottom: 10px;
     }
 }
-
-.auth-links a {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-.confirmation-message {
-    display: none;
-    color: green;
-    font-weight: bold;
-}
-
-.error-page {
-    text-align: center;
-    padding: 50px;
-}
-
-.error-page h1 {
-    font-size: 100px;
-    margin-bottom: 20px;
-}
-
-.error-page p {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.error-page a {
-    color: #007BFF;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.error-page a:hover {
-    text-decoration: underline;
-}
-
