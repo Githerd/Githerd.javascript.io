@@ -2,19 +2,16 @@ import os
 from flask import Flask, render_template, redirect, url_for, flash, request, Blueprint
 from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField
-from wtforms.validators import DataRequired, Email, Length
+from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from datetime import datetime
 from flask_mail import Mail, Message
-from flask_sqlalchemy import SQLAlchemy
+
 
 load_dotenv()
 
 app = Flask(__name__)
 
-# Mail Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587  
 app.config['MAIL_USE_TLS'] = True
@@ -22,30 +19,18 @@ app.config['MAIL_USERNAME'] = os.getenv('EMAIL_USER')
 app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASS')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('EMAIL_USER')
 
-# Database Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')
 
-app.secret_key = os.getenv('SECRET_KEY', 'yumyumsugar_1')
 
 db = SQLAlchemy(app)
 mail = Mail(app)
-
-class ContactMessage(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100), nullable=False)
-    message = db.Column(db.Text, nullable=False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
-with app.app_context():
-    db.create_all()
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
 
-users = {}
 
 class User(UserMixin):
     def __init__(self, id):
@@ -58,6 +43,19 @@ class User(UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
+
+
+class ContactMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+
+with app.app_context():
+    db.create_all()
+
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -102,15 +100,16 @@ def logout():
 
 app.register_blueprint(auth_bp)
 
+# Main blueprint
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @main_bp.route('/skills')
-def skills():
-    return render_template('skills.html')
+def spin():
+    return render_template('spin.html')
 
 @main_bp.route('/projects')
 def projects():
@@ -129,7 +128,7 @@ def contact():
         
         msg = Message('New Contact Form Submission',
                       sender=app.config['MAIL_DEFAULT_SENDER'],
-                      recipients=['your-email@example.com'])
+                      recipients=['your-email@example.com']) 
         msg.body = f'''
         Name: {name}
         Email: {email}
@@ -139,7 +138,6 @@ def contact():
         
         flash('Your message has been sent and stored successfully!', 'success')
         return redirect(url_for('main.balloon'))
-
     return render_template('contact.html')
 
 @main_bp.route('/balloon')
@@ -147,6 +145,7 @@ def balloon():
     return render_template('balloon.html')
 
 app.register_blueprint(main_bp)
+
 
 @app.errorhandler(404)
 def page_not_found(e):
