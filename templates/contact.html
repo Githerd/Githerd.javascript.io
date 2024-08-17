@@ -3,86 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Comedy Clubs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="index.html">
-                    <img src="logo.jpg" alt="Comedy Club Logo" width="48" height="48">
+                <a href="{{ url_for('main.index') }}">
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Comedy Club Logo" width="48" height="48">
                 </a>
             </div>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="clubs.html">Visit us</a>
-                <a href="contact.html">Contact</a>
+                <a href="{{ url_for('main.index') }}">Home</a>
+                <a href="{{ url_for('main.clubs') }}">Visit us</a>
+                <a href="{{ url_for('main.contact') }}">Contact</a>
             </nav>
         </div>
     </header>
-    
-<section>
-<div class="container">
-            <h1>Leave Your Feedback</h1>
-    <form action="contact.html" method="post">
-        <fieldset>
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
 
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+    <section>
+        <h1>Our Comedy Clubs</h1>
+        <p>Discover the best comedy clubs in town.</p>
 
-            <label for="Choose">How do you feel about the page?</label>
-            <select id="Choose" name="Choose">
-                <option value="I love it">I love it</option>
-                <option value="I like it">I like it</option>
-                <option value="Not for me">Not for me</option>
-                <option value="Could be better">Could be better</option>
-                <option value="Not another page about comedy">Not another page about comedy</option>
-                <option value="Nope, I'm out">Nope, I'm out</option>
-            </select>
-            <br><br>
+        <div class="content">
+            <div id="content"></div>
 
-            <label for="comment">Comment (max 1600 characters):</label><br>
-            <textarea id="comment" name="comment" rows="5" maxlength="1600" required></textarea><br><br>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Upcoming Comedy Stand-Up Event in Ireland</legend>
+                    <h2>Date: March 15, 2024</h2>
+                    <h2>Time: 8:00 PM</h2>
+                    <h2>Venue: The Comedy Cellar, Dublin</h2>
+                    <p>Come join us for a night of laughter and fun at The Comedy Cellar in Dublin! Our lineup of talented comedians will have you in stitches with their hilarious stand-up routines.</p>
+                    <p>Don't miss out on this unforgettable evening of comedy!</p>
+                    <p><strong>Tickets are available now!</strong> Click the link below to buy your tickets:</p>
+                    <p><a href="https://www.rte.ie/culture/2022/0917/1321401-5-funniest-irish-comedians-on-instagram/">Buy Tickets now to see our upcoming comics LIVE!</a></p>
+                    <p>Contact us via email: <a href="mailto:kmat.adebisi@gmail.com">kmat.adebisi@gmail.com</a></p>
+                </fieldset>
+            </form>
 
-            <input type="submit" value="Submit">
-        </fieldset>
-    </form>
-</section>
+            <table>
+                <caption>Comedy Clubs In Ireland</caption>
+                <thead>
+                    <tr>
+                        <th>Comedy Club</th>
+                        <th>Location</th>
+                        <th>Website</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>The Comedy Cellar</td>
+                        <td>Dublin</td>
+                        <td><a href="https://www.comedycellar.ie/">https://www.comedycellar.ie</a></td>
+                    </tr>
+                    <tr>
+                        <td>The Laughter Lounge</td>
+                        <td>Dublin</td>
+                        <td><a href="https://www.laughterlounge.com/">https://www.laughterlounge.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>The International Comedy Club</td>
+                        <td>Dublin</td>
+                        <td><a href="https://www.internationalcomedyclub.com/">https://www.internationalcomedyclub.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>The Empire Comedy Club</td>
+                        <td>Belfast</td>
+                        <td><a href="https://www.thebelfastempire.com/venue/comedy-club">https://www.thebelfastempire.com/venue/comedy-club</a></td>
+                    </tr>
+                    <tr>
+                        <td>The Roisin Dubh Comedy Club</td>
+                        <td>Galway</td>
+                        <td><a href="https://www.roisindubh.net/entertainment.html">https://www.roisindubh.net/entertainment.html</a></td>
+                    </tr>
+                    <tr>
+                        <td>The Bankers Comedy Club</td>
+                        <td>Dublin</td>
+                        <td><a href="https://www.facebook.com/thebankerscomedy/">https://www.facebook.com/thebankerscomedy</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cherry Comedy</td>
+                        <td>Dublin</td>
+                        <td><a href="https://www.cherrycomedy.com/">https://www.cherrycomedy.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>The Comedy Crunch</td>
+                        <td>Dublin</td>
+                        <td><a href="https://www.thecomedycrunch.com/">https://www.thecomedycrunch.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>The Empire Laughs Back</td>
+                        <td>Belfast</td>
+                        <td><a href="https://www.thebelfastempire.com/venue/comedy-club">https://www.thebelfastempire.com/venue/comedy-club</a></td>
+                    </tr>
+                    <tr>
+                        <td>Anseo Comedy Club</td>
+                        <td>Dublin</td>
+                        <td><a href="https://www.facebook.com/AnseoComedyClub/">https://www.facebook.com/AnseoComedyClub</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-   <section>
-    <div class="container">
-        <h1>Request Call Back</h1>
-       
-        <form id="myForm" action="balloon.html" method="POST">
-            <fieldset>
-             
-                <input type="text" name="name" placeholder="Enter your name" required>
-                <input type="email" name="email" placeholder="Enter your email" required>
-                <input type="tel" name="phone" placeholder="Enter your number" required>
-                <textarea name="message" placeholder="Enter your message" required></textarea>
-              
-                <button type="submit">Submit</button>
-               
-                <a href="#" id="submitLink">Submit Message</a>
-            </fieldset>
-        </form>
-    </div>
-</section>
-
-
-
-    <div>
-        <button onclick="backToTop()" id="back-to-top">Back to Top</button>
-    </div>
-    
-    <footer>
-        <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
-    </footer>
-    
-    <script src="scripts.js"></script>
-    
-    </body>
-    </html>
+        <div>
+            <button onclick="backToTop()" id="back-to-top">Back to Top</button>
+        </div>
+        
+        <footer>
+            <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
+        </footer>
+        
+        <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    </section>
+</body>
+</html>
