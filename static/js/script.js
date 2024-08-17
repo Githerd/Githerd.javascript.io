@@ -257,6 +257,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    document.addEventListener('DOMContentLoaded', () => {
+    const submitLink = document.getElementById('submitLink');
+    const form = document.getElementById('myForm');
+
+    submitLink.addEventListener('click', (event) => {
+        event.preventDefault();  // Prevent the default anchor behavior
+        form.submit();  // Programmatically submit the form
+
+        // Redirect to balloon.html after form submission
+        window.location.href = 'balloon.html';
+    });
+});
+
     // Conditional Display of Login/Logout Links
     const balloonForm = document.getElementById('balloon-form');
     const confirmationMessage = document.getElementById('confirmation');
