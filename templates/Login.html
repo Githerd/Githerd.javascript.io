@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logged Out - Comedy Club</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
 <nav class="navbar">
-    <a href="index.html" class="navbar-item">
-        <img src="logo.jpg" alt="Comedy Club Logo" width="48" height="48">
+    <a href="{{ url_for('main.home') }}" class="navbar-item">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Comedy Club Logo" width="48" height="48">
     </a>
-    <a href="index.html" class="navbar-item">Comedians</a>
-    <a href="clubs.html" class="navbar-item">Visit us</a>
-    <a href="contact.html" class="navbar-item">Contact Me</a>
-    <a href="spin.html" class="navbar-item">Spin</a>
-    <a href="login.html" class="navbar-item">Log In</a>
-    <a href="register.html" class="navbar-item">Register Now</a>
+    <a href="{{ url_for('main.home') }}" class="navbar-item">Comedians</a>
+    <a href="{{ url_for('main.clubs') }}" class="navbar-item">Visit us</a>
+    <a href="{{ url_for('main.contact') }}" class="navbar-item">Contact Me</a>
+    <a href="{{ url_for('main.spin') }}" class="navbar-item">Spin</a>
+    <a href="{{ url_for('auth.login') }}" class="navbar-item">Log In</a>
+    <a href="{{ url_for('auth.register') }}" class="navbar-item">Register Now</a>
 </nav>
 
 <main class="container">
     <h1>You have successfully logged out</h1>
-    <p>Thank you for visiting! You can <a href="login.html">log in again</a> or explore other sections of the site.</p>
+    <p>Thank you for visiting! You can <a href="{{ url_for('auth.login') }}">log in again</a> or explore other sections of the site.</p>
 </main>
 
 <div>
@@ -33,7 +33,7 @@
     <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
 </footer>
 
-<script src="scripts.js"></script>
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
 
 </body>
 </html>
