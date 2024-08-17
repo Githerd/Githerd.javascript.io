@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comedy Clubs</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="index.html">
-                    <img src="logo.jpg" alt="Comedy Club Logo" width="48" height="48">
+                <a href="{{ url_for('main.index') }}">
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Comedy Club Logo" width="48" height="48">
                 </a>
             </div>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="clubs.html">Visit us</a>
-                <a href="contact.html">Contact</a>
+                <a href="{{ url_for('main.index') }}">Home</a>
+                <a href="{{ url_for('main.clubs') }}">Visit us</a>
+                <a href="{{ url_for('main.contact') }}">Contact</a>
             </nav>
         </div>
     </header>
@@ -115,7 +115,7 @@
             <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
         </footer>
         
-        <script src="scripts.js"></script>
+        <script src="{{ url_for('static', filename='scripts.js') }}"></script>
     </section>
 </body>
 </html>
