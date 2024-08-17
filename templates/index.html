@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Comedy Club</title>
-    <!-- Link to your CSS file using Flask's url_for -->
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -29,7 +29,7 @@
         
         <h2>Featured Comedians</h2>
         
-        <!-- Use url_for to link images -->
+     
         <div class="comedian-profile">
             <img src="{{ url_for('static', filename='daraobriain.jpg') }}" alt="Dara Ó Briain" class="comedian-image">
             <div class="comedian-details">
@@ -111,7 +111,7 @@
         <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
     </footer>
 
-    <!-- Link to your JS file using Flask's url_for -->
+   
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 
 </body>
