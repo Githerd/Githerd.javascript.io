@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Comedy Club</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Link to your CSS file using Flask's url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="index.html">
-                    <img src="logo.jpg" alt="Comedy Club Logo" width="48" height="48">
+                
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Comedy Club Logo" width="48" height="48">
                 </a>
             </div>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="spin.html">Spin the Wheel</a>
-                <a href="login.html">Login</a>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('spin') }}">Spin the Wheel</a>
+                <a href="{{ url_for('login') }}">Login</a>
             </nav>
         </div>
     </header>
@@ -27,8 +29,9 @@
         
         <h2>Featured Comedians</h2>
         
+        <!-- Use url_for to link images -->
         <div class="comedian-profile">
-            <img src="daraobriain.jpg" alt="Dara Ó Briain" class="comedian-image">
+            <img src="{{ url_for('static', filename='daraobriain.jpg') }}" alt="Dara Ó Briain" class="comedian-image">
             <div class="comedian-details">
                 <h3>Dara Ó Briain</h3>
                 <p>Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect.</p>
@@ -37,7 +40,7 @@
         </div>
     
         <div class="comedian-profile">
-            <img src="tommytiernan.jpg" alt="Tommy Tiernan" class="comedian-image">
+            <img src="{{ url_for('static', filename='tommytiernan.jpg') }}" alt="Tommy Tiernan" class="comedian-image">
             <div class="comedian-details">
                 <h3>Tommy Tiernan</h3>
                 <p>Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style.</p>
@@ -46,7 +49,7 @@
         </div>
     
         <div class="comedian-profile">
-            <img src="grahamnorton.jpg" alt="Graham Norton" class="comedian-image">
+            <img src="{{ url_for('static', filename='grahamnorton.jpg') }}" alt="Graham Norton" class="comedian-image">
             <div class="comedian-details">
                 <h3>Graham Norton</h3>
                 <p>Graham Norton is an Irish television and radio presenter, known for his popular talk show.</p>
@@ -55,7 +58,7 @@
         </div>
     
         <div class="comedian-profile">
-            <img src="aislingbea.jpg" alt="Aisling Bea" class="comedian-image">
+            <img src="{{ url_for('static', filename='aislingbea.jpg') }}" alt="Aisling Bea" class="comedian-image">
             <div class="comedian-details">
                 <h3>Aisling Bea</h3>
                 <p>Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills.</p>
@@ -64,7 +67,7 @@
         </div>
     
         <div class="comedian-profile">
-            <img src="davido-doherty.jpg" alt="David O'Doherty" class="comedian-image">
+            <img src="{{ url_for('static', filename='davido-doherty.jpg') }}" alt="David O'Doherty" class="comedian-image">
             <div class="comedian-details">
                 <h3>David O'Doherty</h3>
                 <p>David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy.</p>
@@ -73,7 +76,7 @@
         </div>
     
         <div class="comedian-profile">
-            <img src="ardalohanlon.jpg" alt="Ardal O'Hanlon" class="comedian-image">
+            <img src="{{ url_for('static', filename='ardalohanlon.jpg') }}" alt="Ardal O'Hanlon" class="comedian-image">
             <div class="comedian-details">
                 <h3>Ardal O'Hanlon</h3>
                 <p>Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted.</p>
@@ -82,7 +85,7 @@
         </div>
     
         <div class="comedian-profile">
-            <img src="edbyrne.jpg" alt="Ed Byrne" class="comedian-image">
+            <img src="{{ url_for('static', filename='edbyrne.jpg') }}" alt="Ed Byrne" class="comedian-image">
             <div class="comedian-details">
                 <h3>Ed Byrne</h3>
                 <p>Ed Byrne is a comedian and actor known for his observational humor.</p>
@@ -108,7 +111,8 @@
         <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
     </footer>
 
-    <script src="scripts.js"></script>
+    <!-- Link to your JS file using Flask's url_for -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 
 </body>
 </html>
