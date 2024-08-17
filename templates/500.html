@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>500 - Server Error</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+    
 <body>
+    
     <div class="error-page">
         <h1>500</h1>
         <p>Oops! Something went wrong on our end.</p>
-        <a href="index.html">Return to Home</a>
+        <a href="{{ url_for('main.home') }}">Return to Home</a>
     </div>
 
-    <div>
-        <button onclick="backToTop()" id="back-to-top">Back to Top</button>
-    </div>
+    <button onclick="backToTop()" id="back-to-top">Back to Top</button>
     
     <footer>
         <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
     </footer>
     
-    <script src="scripts.js"></script>
-
+    <script>
+        function backToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+    
 </body>
 </html>
