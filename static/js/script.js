@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
     ];
 
-    
+    // Wheel of Fortune Section
     const canvas = document.getElementById('wheelCanvas');
     const ctx = canvas.getContext('2d');
     const spinButton = document.getElementById('spinButton');
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     drawWheel();
 
-    
+    // Task List Section
     const taskList = document.getElementById('taskList');
     taskList.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-btn')) {
@@ -125,9 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    
     function updateComedyClubs() {
-        comedyClubs.length = 0; 
+        comedyClubs.length = 0;
         const tasks = taskList.querySelectorAll('li label');
         tasks.forEach(task => {
             comedyClubs.push(task.textContent.trim());
@@ -137,11 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateComedyClubs();
 
-    
+    // Comedian Profile Flip Cards
     const images = [
         { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
         { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
-        { src: "Graham-Norton.jpg", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
+        { src: "Graham Norton", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
         { src: "Aisling-Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/watch?v=DAiIUbSt-eM", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
         { src: "David-O-Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/watch?v=TRHS0pN6oC0", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
         { src: "Ardal-O-Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/watch?v=6B--cjte5P4", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
@@ -220,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openModal(images[currentIndex].video);
     });
 
-    
+    // Form Validation and Submission
     const form = document.getElementById('myForm');
     const resultDiv = document.getElementById('result');
 
@@ -258,14 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const form = document.getElementById('balloon-form');
+    // Conditional Display of Login/Logout Links
+    const balloonForm = document.getElementById('balloon-form');
     const confirmationMessage = document.getElementById('confirmation');
     const loginLink = document.getElementById('login-link');
     const registerLink = document.getElementById('register-link');
     const logoutLink = document.getElementById('logout-link');
 
-    
-    const userLoggedIn = true; 
+    const userLoggedIn = true;
 
     if (userLoggedIn) {
         loginLink.style.display = 'none';
@@ -277,10 +276,10 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutLink.style.display = 'none';
     }
 
-    form.addEventListener('submit', function(event) {
+    balloonForm.addEventListener('submit', function(event) {
         event.preventDefault();
         confirmationMessage.textContent = 'Your message has been sent!';
         confirmationMessage.style.display = 'block';
-        form.reset();
+        balloonForm.reset();
     });
 });
