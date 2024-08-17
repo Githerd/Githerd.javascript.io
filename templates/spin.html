@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comedy Club Tasks and Wheel</title>
-    <link rel="stylesheet" href="style.css">
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="navbar-item">
-            <img src="logo.jpg" alt="Comedy Club Logo" width="48" height="48">
+  
+        <a href="{{ url_for('index') }}" class="navbar-item">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Comedy Club Logo" width="48" height="48">
         </a>
-        <a href="index.html" class="navbar-item">Comedians</a>
-        <a href="clubs.html" class="navbar-item">Visit us</a>
-        <a href="contact.html" class="navbar-item">Contact Me</a>
-        <a href="spin.html" class="navbar-item">Spin</a>
-        <a href="login.html" class="navbar-item">Log In</a>
-        <a href="register.html" class="navbar-item">Register Now</a>
+        <a href="{{ url_for('index') }}" class="navbar-item">Comedians</a>
+        <a href="{{ url_for('clubs') }}" class="navbar-item">Visit us</a>
+        <a href="{{ url_for('contact') }}" class="navbar-item">Contact Me</a>
+        <a href="{{ url_for('spin') }}" class="navbar-item">Spin</a>
+        <a href="{{ url_for('login') }}" class="navbar-item">Log In</a>
+        <a href="{{ url_for('register') }}" class="navbar-item">Register Now</a>
     </nav>
 
     <main class="content">
@@ -96,7 +98,8 @@
         <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
     </footer>
     
-    <script src="scripts.js"></script>
+    
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
     
 </body>
 </html>
