@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.jpg" alt="Comedy Club Logo" width="48" height="48">
+                </a>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="clubs.html">Visit us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <form action="balloon.html" method="post">
+        <fieldset>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="Choose">How do you feel about the page?</label>
+            <select id="Choose" name="Choose">
+                <option value="I love it">I love it</option>
+                <option value="I like it">I like it</option>
+                <option value="Not for me">Not for me</option>
+                <option value="Could be better">Could be better</option>
+                <option value="Not another page about comedy">Not another page about comedy</option>
+                <option value="Nope, I'm out">Nope, I'm out</option>
+            </select>
+            <br><br>
+
+            <label for="comment">Comment (max 1600 characters):</label><br>
+            <textarea id="comment" name="comment" rows="5" maxlength="1600" required></textarea><br><br>
+
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+</section>
+
+    <section>
+        <div class="container">
+            <h1>Request Call Back</h1>
+          
+            <form action="contact.html" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <div>
+        <button onclick="backToTop()" id="back-to-top">Back to Top</button>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="scripts.js"></script>
+    
+    </body>
+    </html>

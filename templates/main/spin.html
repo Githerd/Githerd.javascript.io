@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comedy Club Tasks and Wheel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-item">
+            <img src="logo.jpg" alt="Comedy Club Logo" width="48" height="48">
+        </a>
+        <a href="index.html" class="navbar-item">Comedians</a>
+        <a href="clubs.html" class="navbar-item">Visit us</a>
+        <a href="contact.html" class="navbar-item">Contact Me</a>
+        <a href="spin.html" class="navbar-item">Spin</a>
+        <a href="login.html" class="navbar-item">Log In</a>
+        <a href="register.html" class="navbar-item">Register Now</a>
+    </nav>
+
+    <main class="content">
+        <h1>Comedy Club Tasks</h1>
+
+        <ol id="taskList">
+            <li>
+                <input type="checkbox" id="task1" class="task-checkbox">
+                <label for="task1">The Comedy Cellar</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task2" class="task-checkbox">
+                <label for="task2">The Laughter Lounge</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task3" class="task-checkbox">
+                <label for="task3">The International Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task4" class="task-checkbox">
+                <label for="task4">The Empire Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task5" class="task-checkbox">
+                <label for="task5">The Roisin Dubh Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task6" class="task-checkbox">
+                <label for="task6">The Bankers Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task7" class="task-checkbox">
+                <label for="task7">Cherry Comedy</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task8" class="task-checkbox">
+                <label for="task8">The Comedy Crunch</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task9" class="task-checkbox">
+                <label for="task9">The Empire Laughs Back</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task10" class="task-checkbox">
+                <label for="task10">Anseo Comedy Club</label>
+                <button class="delete-btn">Delete</button>
+            </li>
+        </ol>
+
+        <br>
+
+        <h1>Comedy Club Wheel</h1>
+
+        <div class="wheel-container" role="region" aria-label="Comedy Club Wheel Spinner">
+            <canvas id="wheelCanvas" width="500" height="500" aria-hidden="true"></canvas>
+            <div id="pointer" aria-hidden="true"></div>
+            <button id="spinButton" aria-live="polite">Spin</button>
+            <p id="result" aria-live="polite"></p>
+        </div>
+    </main>
+
+    <div>
+        <button onclick="backToTop()" id="back-to-top">Back to Top</button>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Comedy Club. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="scripts.js"></script>
+    
+</body>
+</html>
