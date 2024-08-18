@@ -1,1 +1,1 @@
-web: gumicorm app:app
+web: gunicorn app:app
