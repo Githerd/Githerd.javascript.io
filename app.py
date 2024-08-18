@@ -12,6 +12,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
+# Mail Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587  
 app.config['MAIL_USE_TLS'] = True
@@ -19,6 +20,7 @@ app.config['MAIL_USERNAME'] = os.getenv('EMAIL_USER')
 app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASS')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('EMAIL_USER')
 
+# Database Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')
@@ -26,11 +28,12 @@ app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')
 
 db = SQLAlchemy(app)
 mail = Mail(app)
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
 
+
+users = {}
 
 class User(UserMixin):
     def __init__(self, id):
@@ -51,7 +54,6 @@ class ContactMessage(db.Model):
     email = db.Column(db.String(100), nullable=False)
     message = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
 
 with app.app_context():
     db.create_all()
@@ -100,14 +102,14 @@ def logout():
 
 app.register_blueprint(auth_bp)
 
-# Main blueprint
+
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def home():
     return render_template('index.html')
 
-@main_bp.route('/skills')
+@main_bp.route('/spin')
 def spin():
     return render_template('spin.html')
 
