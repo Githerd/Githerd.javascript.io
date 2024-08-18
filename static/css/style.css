@@ -1,81 +1,94 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    padding: 20px;
+    background-color: #f4f4f4;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 20px;
+h1 {
+    text-align: center;
     color: #333;
 }
 
-p {
-    margin-bottom: 20px;
-    color: #555;
+/* Spinning Wheel */
+#wheelCanvas {
+    display: block;
+    margin: 0 auto 20px;
+    border: 2px solid #333;
+    border-radius: 50%;
 }
 
-.navbar {
-    background-color: #007BFF;
+#spinButton {
+    display: block;
+    margin: 0 auto;
     padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#spinButton:hover {
+    background-color: #218838;
+}
+
+#result {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Task Management */
+#taskList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#taskList li {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
 }
 
-.navbar a {
+#taskList li.checked {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.delete-btn {
+    background-color: #dc3545;
     color: #fff;
-    text-decoration: none;
-    padding: 8px 16px;
-    transition: background-color 0.3s ease;
-    flex: 1;
-    text-align: center;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.navbar a:hover {
-    background-color: #0056b3;
+.delete-btn:hover {
+    background-color: #c82333;
 }
 
-.logo img {
-    display: block;
-    height: auto;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-section {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.image-gallery {
+/* Image Cards with Modal */
+#imageContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    margin-bottom: 20px;
+    gap: 20px;
+    justify-content: center;
 }
 
 .flip-card {
     background-color: transparent;
-    width: 100%;
-    max-width: 300px;
-    height: 400px;
+    width: 300px;
+    height: 200px;
     perspective: 1000px;
-    margin: 10px;
-    cursor: pointer;
 }
 
 .flip-card-inner {
@@ -83,7 +96,7 @@ section {
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.6s;
+    transition: transform 0.8s;
     transform-style: preserve-3d;
 }
 
@@ -91,235 +104,147 @@ section {
     transform: rotateY(180deg);
 }
 
-.flip-card-front,
-.flip-card-back {
+.flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .flip-card-front {
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ddd;
+    color: black;
+}
+
+.flip-card-front img {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
 }
 
 .flip-card-back {
-    background-color: #007BFF;
+    background-color: #007bff;
     color: white;
     transform: rotateY(180deg);
-    padding: 20px;
-    border: 1px solid #ddd;
-}
-
-.comedian-profile {
     display: flex;
     align-items: center;
-    background-color: #fff;
+    justify-content: center;
     padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
-.comedian-image {
-    border-radius: 50%;
-    margin-right: 20px;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-}
-
-.comedian-details {
-    flex: 1;
-}
-
-.watch-video-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.watch-video-button:hover {
-    background-color: #0056b3;
-}
-
+/* Modal */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1001;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
+    background-color: #fff;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 700px;
-    text-align: center;
+    border-radius: 10px;
 }
 
-.modal .close {
+.modal-content iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 10px;
+}
+
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.modal .close:hover {
-    color: black;
-}
-
-.modal-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.modal-navigation button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 4px;
+#prevBtn, #nextBtn {
+    background-color: #007bff;
     color: white;
+    border: none;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin: 10px;
 }
 
-.modal-navigation button:hover {
+#prevBtn:hover, #nextBtn:hover {
     background-color: #0056b3;
 }
 
-.wheel-container {
-    position: relative;
-    display: inline-block;
-    margin-top: 50px;
-    text-align: center;
-}
-
-canvas {
-    border: 5px solid #000;
-    max-width: 100%;
-}
-
-#pointer {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 30px solid red;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    z-index: 1000;
-}
-
-#spinButton {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-#back-to-top {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    z-index: 1000;
-}
-
-#back-to-top:hover {
-    background-color: #0056b3;
-}
-
-footer {
-    text-align: center;
+/* Form Validation */
+#myForm, #balloon-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
     padding: 20px;
-    background-color: #007BFF;
-    color: white;
-    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#myForm input, #balloon-form input {
     width: 100%;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
-@media screen and (max-width: 1024px) {
-    .navbar a {
-        font-size: 15px;
-        padding: 10px 15px;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    form {
-        max-width: 100%;
-    }
+#myForm button, #balloon-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-@media screen and (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+#myForm button:hover, #balloon-form button:hover {
+    background-color: #0056b3;
+}
 
-    .navbar a {
-        width: 100%;
-        padding: 10px;
-    }
+#result {
+    margin-top: 20px;
+    font-size: 16px;
+    color: red;
+}
 
-    .container {
-        margin: 10px;
-        padding: 10px;
-    }
+/* Login/Logout Links */
+#login-link, #register-link, #logout-link {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
 
-    .comedian-profile {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .comedian-image {
-        margin-bottom: 20px;
-    }
-
-    .modal-navigation {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .modal-navigation button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+#login-link:hover, #register-link:hover, #logout-link:hover {
+    background-color: #0056b3;
 }
