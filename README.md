@@ -5,7 +5,7 @@ This project is a JavaScript-based comedy website designed to showcase various c
 ## How to view our content
 
 - githubpages link: <https://github.com/Githerd>
-- github-repo link: <https://github.com/Githerd.javascript.io>
+- github-repo link: <https://github.com/Githerd.javascript.io.git>
 
 ## Features
 
