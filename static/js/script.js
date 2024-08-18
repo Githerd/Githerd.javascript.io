@@ -1,45 +1,134 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    function changeBackgroundColor() {
+        const colors = [
+            "#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#FFBD33", "#33FFBD",
+            "#5733FF", "#FF5733", "#A633FF", "#33A6FF", "#FF3333", "#33FF33",
+            "#3333FF", "#FF5733", "#57FF33", "#FF3357", "#FF5733", "#5733FF",
+            "#3357FF", "#FF5733", "#33FFBD", "#FF33A6", "#FFBD33", "#33FF57",
+            "#5733FF", "#FF7F50", "#6A5ACD", "#20B2AA", "#FFD700", "#DC143C",
+            "#8A2BE2", "#FF4500", "#2E8B57", "#FF6347", "#4682B4", "#32CD32",
+            "#BA55D3", "#FFD700", "#00FA9A", "#FF1493", "#4169E1", "#FF8C00",
+            "#9932CC", "#00CED1", "#FF69B4", "#B22222", "#7FFF00", "#6495ED",
+            "#FF4500", "#ADFF2F", "#FFA07A", "#20B2AA", "#9370DB", "#3CB371",
+            "#7B68EE", "#00FF7F", "#FF6347", "#4682B4", "#FF4500", "#DA70D6",
+            "#87CEEB", "#6A5ACD", "#32CD32", "#FF00FF", "#00FFFF", "#FFA500"
+        ];
+
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        document.body.style.backgroundColor = colors[randomIndex];
+    }
+
+
+    setInterval(changeBackgroundColor, 3000); // Change every 3 secondsclass SpinningWheel {
+
+    constructor(canvasId, spinButtonId, resultDisplayId, items); {
+        this.canvas = document.getElementById(canvasId);
+        this.ctx = this.canvas.getContext('2d');
+        this.spinButton = document.getElementById(spinButtonId);
+        this.resultDisplay = document.getElementById(resultDisplayId);
+        this.items = items;
+        this.radius = this.canvas.width / 2;
+        this.arc = Math.PI / (this.items.length / 2);
+        this.startAngle = 0;
+        this.spinAngleStart = 10;
+        this.spinTime = 0;
+        this.spinTimeTotal = 0;
+
+        this.spinButton.addEventListener('click', () => this.startSpin());
+        this.drawWheel();
+
+        function drawWheel() {
+            const arc = Math.PI / (comedyClubs.length / 2);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < comedyClubs.length; i++) {
+                const angle = i * arc;
+                ctx.beginPath();
+                ctx.arc(radius, radius, radius, angle, angle + arc, false);
+                ctx.lineTo(radius, radius);
+                ctx.fillStyle = getColor(i, comedyClubs.length);
+                ctx.fill();
+                ctx.save();
+                ctx.fillStyle = "black";
+                ctx.font = 'bold 10px Arial';
+                ctx.translate(
+                    radius + Math.cos(angle + arc / 2) * radius * 0.9,
+                    radius + Math.sin(angle + arc / 2) * radius * 0.9
+                );
+                ctx.rotate(angle + arc / 2 + Math.PI / 2);
+                const text = comedyClubs[i];
+                ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+                ctx.restore();
+            }
+
+            drawPointer();
+        } function drawPointer() {
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2 - 10, 0);
+            ctx.lineTo(canvas.width / 2 + 10, 0);
+            ctx.lineTo(canvas.width / 2, 30);
+            ctx.fillStyle = "red";
+            ctx.fill();
+        }
+
+
+        startSpin(); {
+            this.spinAngleStart = Math.random() * 10 + 10;
+            this.spinTime = 0;
+            this.spinTimeTotal = Math.random() * 3 + 4 * 1000;
+            this.rotateWheel();
+
+        }
+    }
+
     const comedyClubs = [
         "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
         "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
         "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
     ];
 
-    // Wheel of Fortune Section
-    const canvas = document.getElementById('wheelCanvas');
-    const ctx = canvas.getContext('2d');
-    const spinButton = document.getElementById('spinButton');
-    const resultDisplay = document.getElementById('result');
-    const radius = canvas.width / 2;
-    const arc = Math.PI / (comedyClubs.length / 2);
-    let spinAngleStart = 10;
-    let spinTime = 0;
-    let spinTimeTotal = 0;
-    let startAngle = 0;
+    new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
+    class SpinningWheel {
+        constructor(canvasId, spinButtonId, resultDisplayId, items) {
+            this.canvas = document.getElementById(canvasId);
+            this.ctx = this.canvas.getContext('2d');
+            this.spinButton = document.getElementById(spinButtonId);
+            this.resultDisplay = document.getElementById(resultDisplayId);
+            this.items = items;
+            this.radius = this.canvas.width / 2;
+            this.arc = Math.PI / (this.items.length / 2);
+            this.startAngle = 0;
+            this.spinAngleStart = 10;
+            this.spinTime = 0;
+            this.spinTimeTotal = 0;
 
-    function drawWheel() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < comedyClubs.length; i++) {
-            const angle = i * arc;
-            ctx.beginPath();
-            ctx.arc(radius, radius, radius, angle, angle + arc, false);
-            ctx.lineTo(radius, radius);
-            ctx.fillStyle = getColor(i, comedyClubs.length);
-            ctx.fill();
-            ctx.save();
-            ctx.fillStyle = "black";
-            ctx.font = 'bold 10px Arial';
-            ctx.translate(
-                radius + Math.cos(angle + arc / 2) * radius * 0.9,
-                radius + Math.sin(angle + arc / 2) * radius * 0.9
-            );
-            ctx.rotate(angle + arc / 2 + Math.PI / 2);
-            const text = comedyClubs[i];
-            ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-            ctx.restore();
+            this.spinButton.addEventListener('click', () => this.startSpin());
+            this.drawWheel();
         }
-        drawPointer();
+
+        drawWheel() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            for (let i = 0; i < this.items.length; i++) {
+                const angle = i * this.arc;
+                this.ctx.beginPath();
+                this.ctx.arc(this.radius, this.radius, this.radius, angle, angle + this.arc, false);
+                this.ctx.lineTo(this.radius, this.radius);
+                this.ctx.fillStyle = this.getColor(i, this.items.length);
+                this.ctx.fill();
+                this.ctx.save();
+                this.ctx.fillStyle = "black";
+                this.ctx.font = 'bold 10px Arial';
+                this.ctx.translate(
+                    this.radius + Math.cos(angle + this.arc / 2) * this.radius * 0.9,
+                    this.radius + Math.sin(angle + this.arc / 2) * this.radius * 0.9
+                );
+                this.ctx.rotate(angle + this.arc / 2 + Math.PI / 2);
+                const text = this.items[i];
+                this.ctx.fillText(text, -this.ctx.measureText(text).width / 2, 0);
+                this.ctx.restore();
+            }
+            this.drawPointer();
+        }
     }
 
     function drawPointer() {
@@ -56,9 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const center = 128;
         const width = 127;
         const frequency = Math.PI * 2 / maxitem;
+
         const red = Math.sin(frequency * item + 2 + phase) * width + center;
         const green = Math.sin(frequency * item + 0 + phase) * width + center;
         const blue = Math.sin(frequency * item + 4 + phase) * width + center;
+
         return `rgb(${red},${green},${blue})`;
     }
 
@@ -76,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function stopRotateWheel() {
         const degrees = startAngle * 180 / Math.PI + 90;
-        const arcd = arc * 180 / Math.PI;
-        const index = Math.floor((360 - degrees % 360) / arcd);
+        const arcd = Math.PI / (comedyClubs.length / 2);
+        const index = Math.floor((360 - degrees % 360) / (arcd * 180 / Math.PI));
         ctx.save();
         ctx.font = 'bold 30px Helvetica, Arial';
         const text = comedyClubs[index];
@@ -102,197 +193,297 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     spinButton.addEventListener('click', () => {
+        if (comedyClubs.length === 0) return;
         spinAngleStart = Math.random() * 10 + 10;
         spinTime = 0;
         spinTimeTotal = Math.random() * 3 + 4 * 1000;
         rotateWheel();
     });
 
-    drawWheel();
-
-    // Task List Section
-    const taskList = document.getElementById('taskList');
-    taskList.addEventListener('click', (event) => {
-        if (event.target.classList.contains('delete-btn')) {
-            const listItem = event.target.closest('li');
-            const label = listItem.querySelector('label');
-            label.style.textDecoration = 'line-through';
-            listItem.classList.add('checked');
-            setTimeout(() => {
-                listItem.remove();
-                updateComedyClubs();
-            }, 500);
-        }
-    });
-
-    function updateComedyClubs() {
-        comedyClubs.length = 0;
-        const tasks = taskList.querySelectorAll('li label');
-        tasks.forEach(task => {
-            comedyClubs.push(task.textContent.trim());
-        });
-        drawWheel();
-    }
-
-    updateComedyClubs();
-
-    // Comedian Profile Flip Cards
-    const images = [
-        { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
-        { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
-        { src: "Graham Norton", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
-        { src: "Aisling-Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/watch?v=DAiIUbSt-eM", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
-        { src: "David-O-Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/watch?v=TRHS0pN6oC0", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
-        { src: "Ardal-O-Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/watch?v=6B--cjte5P4", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
-        { src: "Ed-Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=8gxb4e6gInU", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
-    ];
-
-    let currentIndex = 0;
-    const container = document.getElementById('imageContainer');
-    const modal = document.getElementById('videoModal');
-    const videoFrame = document.getElementById('videoFrame');
-    const closeBtn = document.querySelector('.modal .close');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    images.forEach((image, index) => {
-        const flipCard = document.createElement('div');
-        flipCard.className = 'flip-card';
-        flipCard.dataset.index = index;
-
-        const flipCardInner = document.createElement('div');
-        flipCardInner.className = 'flip-card-inner';
-
-        const flipCardFront = document.createElement('div');
-        flipCardFront.className = 'flip-card-front';
-        const img = document.createElement('img');
-        img.src = image.src;
-        img.alt = image.alt;
-        img.width = 300;
-        img.height = 200;
-        flipCardFront.appendChild(img);
-
-        const flipCardBack = document.createElement('div');
-        flipCardBack.className = 'flip-card-back';
-        const bio = document.createElement('p');
-        bio.textContent = image.bio;
-        flipCardBack.appendChild(bio);
-
-        flipCardInner.appendChild(flipCardFront);
-        flipCardInner.appendChild(flipCardBack);
-        flipCard.appendChild(flipCardInner);
-        container.appendChild(flipCard);
-    });
-
-    container.addEventListener('click', (event) => {
-        if (event.target.tagName === 'IMG' || event.target.classList.contains('flip-card-back')) {
-            currentIndex = parseInt(event.target.closest('.flip-card').dataset.index, 10);
-            openModal(images[currentIndex].video);
-        }
-    });
-
-    function openModal(videoUrl) {
-        videoFrame.src = videoUrl;
-        modal.style.display = 'block';
-    }
-
-    function closeModal() {
-        modal.style.display = 'none';
-        videoFrame.src = '';
-    }
-
-    closeBtn.addEventListener('click', closeModal);
-
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-        openModal(images[currentIndex].video);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-        openModal(images[currentIndex].video);
-    });
-
-    // Form Validation and Submission
-    const form = document.getElementById('myForm');
-    const resultDiv = document.getElementById('result');
-
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    function isValidPassword(password) {
-        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
-        return passwordRegex.test(password);
-    }
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (name && isValidEmail(email) && isValidPassword(password)) {
-            resultDiv.innerHTML = `<p>Thank you for signing up, ${name}!</p>`;
-            resultDiv.style.display = 'block';
-            form.reset();
-        } else {
-            let errorMessage = 'Please fill in all fields correctly.';
-            if (!isValidEmail(email)) {
-                errorMessage += '<br>Email format is invalid.';
-            }
-            if (!isValidPassword(password)) {
-                errorMessage += '<br>Password must be at least 8 characters long, include one uppercase letter, one number, and one special character.';
-            }
-            resultDiv.innerHTML = `<p>${errorMessage}</p>`;
-            resultDiv.style.display = 'block';
-        }
-    });
 
     document.addEventListener('DOMContentLoaded', () => {
-    const submitLink = document.getElementById('submitLink');
-    const form = document.getElementById('myForm');
+        const comedyClubs = [
+            "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
+            "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
+            "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
+        ];
 
-    submitLink.addEventListener('click', (event) => {
-        event.preventDefault();  // Prevent the default anchor behavior
-        form.submit();  // Programmatically submit the form
-
-        // Redirect to balloon.html after form submission
-        window.location.href = 'balloon.html';
+        const wheel = new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
     });
-});
 
-    // Conditional Display of Login/Logout Links
-    const balloonForm = document.getElementById('balloon-form');
-    const confirmationMessage = document.getElementById('confirmation');
-    const loginLink = document.getElementById('login-link');
-    const registerLink = document.getElementById('register-link');
-    const logoutLink = document.getElementById('logout-link');
 
-    const userLoggedIn = true;
+    class TaskManager {
+        constructor(taskListId, wheel) {
+            this.taskList = document.getElementById(taskListId);
+            this.wheel = wheel;
+            this.taskList.addEventListener('click', (event) => this.handleTaskClick(event));
+        }
 
-    if (userLoggedIn) {
-        loginLink.style.display = 'none';
-        registerLink.style.display = 'none';
-        logoutLink.style.display = 'inline-block';
-    } else {
-        loginLink.style.display = 'inline-block';
-        registerLink.style.display = 'inline-block';
-        logoutLink.style.display = 'none';
+        handleTaskClick(event) {
+            if (event.target.classList.contains('delete-btn')) {
+                const listItem = event.target.closest('li');
+                const label = listItem.querySelector('label');
+                label.style.textDecoration = 'line-through';
+                listItem.classList.add('checked');
+                setTimeout(() => {
+                    listItem.remove();
+                    this.updateComedyClubs();
+                }, 500);
+            }
+        }
+
+        updateComedyClubs() {
+            this.wheel.items.length = 0;
+            const tasks = this.taskList.querySelectorAll('li label');
+            tasks.forEach(task => {
+                this.wheel.items.push(task.textContent.trim());
+            });
+            this.wheel.drawWheel();
+        }
     }
 
-    balloonForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        confirmationMessage.textContent = 'Your message has been sent!';
-        confirmationMessage.style.display = 'block';
-        balloonForm.reset();
+    document.addEventListener('DOMContentLoaded', () => {
+        const comedyClubs = [
+            "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
+            "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
+            "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
+        ];
+
+        const wheel = new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
+        new TaskManager('taskList', wheel);
     });
+
+
+    class ImageModalGallery {
+        constructor(imageContainerId, modalId, videoFrameId, prevBtnId, nextBtnId, closeBtnClass, images) {
+            this.container = document.getElementById(imageContainerId);
+            this.modal = document.getElementById(modalId);
+            this.videoFrame = document.getElementById(videoFrameId);
+            this.prevBtn = document.getElementById(prevBtnId);
+            this.nextBtn = document.getElementById(nextBtnId);
+            this.closeBtn = document.querySelector(closeBtnClass);
+            this.images = images;
+            this.currentIndex = 0;
+
+            this.renderImages();
+            this.addEventListeners();
+        }
+
+        renderImages() {
+            this.images.forEach((image, index) => {
+                const flipCard = document.createElement('div');
+                flipCard.className = 'flip-card';
+                flipCard.dataset.index = index;
+
+                const flipCardInner = document.createElement('div');
+                flipCardInner.className = 'flip-card-inner';
+
+                const flipCardFront = document.createElement('div');
+                flipCardFront.className = 'flip-card-front';
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.alt;
+                img.width = 300;
+                img.height = 200;
+                flipCardFront.appendChild(img);
+
+                const flipCardBack = document.createElement('div');
+                flipCardBack.className = 'flip-card-back';
+                const bio = document.createElement('p');
+                bio.textContent = image.bio;
+                flipCardBack.appendChild(bio);
+
+                flipCardInner.appendChild(flipCardFront);
+                flipCardInner.appendChild(flipCardBack);
+                flipCard.appendChild(flipCardInner);
+                this.container.appendChild(flipCard);
+            });
+        }
+
+        addEventListeners() {
+            this.container.addEventListener('click', (event) => this.handleImageClick(event));
+            this.closeBtn.addEventListener('click', () => this.closeModal());
+            window.addEventListener('click', (event) => {
+                if (event.target === this.modal) this.closeModal();
+            });
+            this.prevBtn.addEventListener('click', () => this.showPrevImage());
+            this.nextBtn.addEventListener('click', () => this.showNextImage());
+        }
+
+        handleImageClick(event) {
+            if (event.target.tagName === 'IMG' || event.target.classList.contains('flip-card-back')) {
+                this.currentIndex = parseInt(event.target.closest('.flip-card').dataset.index, 10);
+                this.openModal(this.images[this.currentIndex].video);
+            }
+        }
+
+        openModal(videoUrl) {
+            this.videoFrame.src = videoUrl;
+            this.modal.style.display = 'block';
+        }
+
+        closeModal() {
+            this.modal.style.display = 'none';
+            this.videoFrame.src = '';
+        }
+
+        showPrevImage() {
+            this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.images.length - 1;
+            this.openModal(this.images[this.currentIndex].video);
+        }
+
+        showNextImage() {
+            this.currentIndex = (this.currentIndex < this.images.length - 1) ? this.currentIndex + 1 : 0;
+            this.openModal(this.images[this.currentIndex].video);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = [
+            { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
+            { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
+            { src: "Graham Norton.jpg", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
+            { src: "Aisling Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/watch?v=DAiIUbSt-eM", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
+            { src: "David O'Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/watch?v=TRHS0pN6oC0", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
+            { src: "Ardal O'Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/watch?v=6B--cjte5P4", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
+            { src: "Ed Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=8gxb4e6gInU", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
+        ];
+
+        new ImageModalGallery('imageContainer', 'videoModal', 'videoFrame', 'prevBtn', 'nextBtn', '.modal .close', images);
+    });
+
+
+    class FormValidator {
+        constructor(formId, resultDivId) {
+            this.form = document.getElementById(formId);
+            this.resultDiv = document.getElementById(resultDivId);
+
+            this.form.addEventListener('submit', (event) => this.handleSubmit(event));
+        }
+
+        isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        isValidPassword(password) {
+            const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+            return passwordRegex.test(password);
+        }
+
+        handleSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (name && this.isValidEmail(email) && this.isValidPassword(password)) {
+                this.resultDiv.innerHTML = `<p>Thank you for signing up, ${name}!</p>`;
+                this.resultDiv.style.display = 'block';
+                this.form.reset();
+            } else {
+                let errorMessage = 'Please fill in all fields correctly.';
+                if (!this.isValidEmail(email)) {
+                    errorMessage += '<br>Email format is invalid.';
+                }
+                if (!this.isValidPassword(password)) {
+                    errorMessage += '<br>Password must be at least 8 characters long, include one uppercase letter, one number, and one special character.';
+                }
+                this.resultDiv.innerHTML = `<p>${errorMessage}</p>`;
+                this.resultDiv.style.display = 'block';
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        new FormValidator('myForm', 'result');
+    });
+
+    class AuthManager {
+        constructor(loginLinkId, registerLinkId, logoutLinkId, userLoggedIn) {
+            this.loginLink = document.getElementById(loginLinkId);
+            this.registerLink = document.getElementById(registerLinkId);
+            this.logoutLink = document.getElementById(logoutLinkId);
+            this.userLoggedIn = userLoggedIn;
+
+            this.updateAuthState();
+        }
+
+        updateAuthState() {
+            if (this.userLoggedIn) {
+                this.loginLink.style.display = 'none';
+                this.registerLink.style.display = 'none';
+                this.logoutLink.style.display = 'inline-block';
+            } else {
+                this.loginLink.style.display = 'inline-block';
+                this.registerLink.style.display = 'inline-block';
+                this.logoutLink.style.display = 'none';
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const userLoggedIn = true;
+        new AuthManager('login-link', 'register-link', 'logout-link', userLoggedIn);
+    });
+
+
+    class AuthManager {
+        constructor(loginLinkId, registerLinkId, logoutLinkId, userLoggedIn) {
+            this.loginLink = document.getElementById(loginLinkId);
+            this.registerLink = document.getElementById(registerLinkId);
+            this.logoutLink = document.getElementById(logoutLinkId);
+            this.userLoggedIn = userLoggedIn;
+
+            this.updateAuthState();
+        }
+
+        updateAuthState() {
+            if (this.userLoggedIn) {
+                this.loginLink.style.display = 'none';
+                this.registerLink.style.display = 'none';
+                this.logoutLink.style.display = 'inline-block';
+            } else {
+                this.loginLink.style.display = 'inline-block';
+                this.registerLink.style.display = 'inline-block';
+                this.logoutLink.style.display = 'none';
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const userLoggedIn = true;
+        new AuthManager('login-link', 'register-link', 'logout-link', userLoggedIn);
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const comedyClubs = [
+            "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
+            "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
+            "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
+        ];
+
+        const wheel = new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
+        new TaskManager('taskList', wheel);
+
+        const images = [
+            { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
+            { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
+            { src: "Graham Norton.jpg", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
+            { src: "Aisling Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/watch?v=DAiIUbSt-eM", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
+            { src: "David O'Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/watch?v=TRHS0pN6oC0", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
+            { src: "Ardal O'Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/watch?v=6B--cjte5P4", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
+            { src: "Ed Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=8gxb4e6gInU", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
+        ];
+
+        new ImageModalGallery('imageContainer', 'videoModal', 'videoFrame', 'prevBtn', 'nextBtn', '.modal .close', images);
+
+        new FormValidator('myForm', 'result');
+
+        const userLoggedIn = true;
+        new AuthManager('login-link', 'register-link', 'logout-link', userLoggedIn);
+    }
+    );
 });
