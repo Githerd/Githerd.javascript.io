@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Function to change background color
     function changeBackgroundColor() {
         const colors = [
             "#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#FFBD33", "#33FFBD",
@@ -19,75 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.backgroundColor = colors[randomIndex];
     }
 
+    setInterval(changeBackgroundColor, 3000); // Change every 3 seconds
 
-    setInterval(changeBackgroundColor, 3000); // Change every 3 secondsclass SpinningWheel {
-
-    constructor(canvasId, spinButtonId, resultDisplayId, items); {
-        this.canvas = document.getElementById(canvasId);
-        this.ctx = this.canvas.getContext('2d');
-        this.spinButton = document.getElementById(spinButtonId);
-        this.resultDisplay = document.getElementById(resultDisplayId);
-        this.items = items;
-        this.radius = this.canvas.width / 2;
-        this.arc = Math.PI / (this.items.length / 2);
-        this.startAngle = 0;
-        this.spinAngleStart = 10;
-        this.spinTime = 0;
-        this.spinTimeTotal = 0;
-
-        this.spinButton.addEventListener('click', () => this.startSpin());
-        this.drawWheel();
-
-        function drawWheel() {
-            const arc = Math.PI / (comedyClubs.length / 2);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < comedyClubs.length; i++) {
-                const angle = i * arc;
-                ctx.beginPath();
-                ctx.arc(radius, radius, radius, angle, angle + arc, false);
-                ctx.lineTo(radius, radius);
-                ctx.fillStyle = getColor(i, comedyClubs.length);
-                ctx.fill();
-                ctx.save();
-                ctx.fillStyle = "black";
-                ctx.font = 'bold 10px Arial';
-                ctx.translate(
-                    radius + Math.cos(angle + arc / 2) * radius * 0.9,
-                    radius + Math.sin(angle + arc / 2) * radius * 0.9
-                );
-                ctx.rotate(angle + arc / 2 + Math.PI / 2);
-                const text = comedyClubs[i];
-                ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-                ctx.restore();
-            }
-
-            drawPointer();
-        } function drawPointer() {
-            ctx.beginPath();
-            ctx.moveTo(canvas.width / 2 - 10, 0);
-            ctx.lineTo(canvas.width / 2 + 10, 0);
-            ctx.lineTo(canvas.width / 2, 30);
-            ctx.fillStyle = "red";
-            ctx.fill();
-        }
-
-
-        startSpin(); {
-            this.spinAngleStart = Math.random() * 10 + 10;
-            this.spinTime = 0;
-            this.spinTimeTotal = Math.random() * 3 + 4 * 1000;
-            this.rotateWheel();
-
-        }
-    }
-
-    const comedyClubs = [
-        "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
-        "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
-        "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
-    ];
-
-    new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
     class SpinningWheel {
         constructor(canvasId, spinButtonId, resultDisplayId, items) {
             this.canvas = document.getElementById(canvasId);
@@ -129,88 +63,75 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             this.drawPointer();
         }
-    }
 
-    function drawPointer() {
-        ctx.beginPath();
-        ctx.moveTo(canvas.width / 2 - 10, 0);
-        ctx.lineTo(canvas.width / 2 + 10, 0);
-        ctx.lineTo(canvas.width / 2, 30);
-        ctx.fillStyle = "red";
-        ctx.fill();
-    }
-
-    function getColor(item, maxitem) {
-        const phase = 0;
-        const center = 128;
-        const width = 127;
-        const frequency = Math.PI * 2 / maxitem;
-
-        const red = Math.sin(frequency * item + 2 + phase) * width + center;
-        const green = Math.sin(frequency * item + 0 + phase) * width + center;
-        const blue = Math.sin(frequency * item + 4 + phase) * width + center;
-
-        return `rgb(${red},${green},${blue})`;
-    }
-
-    function rotateWheel() {
-        spinTime += 30;
-        if (spinTime >= spinTimeTotal) {
-            stopRotateWheel();
-            return;
+        drawPointer() {
+            this.ctx.beginPath();
+            this.ctx.moveTo(this.canvas.width / 2 - 10, 0);
+            this.ctx.lineTo(this.canvas.width / 2 + 10, 0);
+            this.ctx.lineTo(this.canvas.width / 2, 30);
+            this.ctx.fillStyle = "red";
+            this.ctx.fill();
         }
-        const spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
-        startAngle += (spinAngle * Math.PI / 180);
-        drawRotatedWheel();
-        requestAnimationFrame(rotateWheel);
+
+        getColor(item, maxitem) {
+            const phase = 0;
+            const center = 128;
+            const width = 127;
+            const frequency = Math.PI * 2 / maxitem;
+
+            const red = Math.sin(frequency * item + 2 + phase) * width + center;
+            const green = Math.sin(frequency * item + 0 + phase) * width + center;
+            const blue = Math.sin(frequency * item + 4 + phase) * width + center;
+
+            return `rgb(${red},${green},${blue})`;
+        }
+
+        rotateWheel() {
+            this.spinTime += 30;
+            if (this.spinTime >= this.spinTimeTotal) {
+                this.stopRotateWheel();
+                return;
+            }
+            const spinAngle = this.spinAngleStart - this.easeOut(this.spinTime, 0, this.spinAngleStart, this.spinTimeTotal);
+            this.startAngle += (spinAngle * Math.PI / 180);
+            this.drawRotatedWheel();
+            requestAnimationFrame(() => this.rotateWheel());
+        }
+
+        stopRotateWheel() {
+            const degrees = this.startAngle * 180 / Math.PI + 90;
+            const arcd = Math.PI / (this.items.length / 2);
+            const index = Math.floor((360 - degrees % 360) / (arcd * 180 / Math.PI));
+            this.ctx.save();
+            this.ctx.font = 'bold 30px Helvetica, Arial';
+            const text = this.items[index];
+            this.resultDisplay.innerText = `You landed on: ${text}`;
+            this.ctx.restore();
+        }
+
+        easeOut(t, b, c, d) {
+            const ts = (t /= d) * t;
+            const tc = ts * t;
+            return b + c * (tc + -3 * ts + 3 * t);
+        }
+
+        drawRotatedWheel() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.ctx.save();
+            this.ctx.translate(this.radius, this.radius);
+            this.ctx.rotate(this.startAngle);
+            this.ctx.translate(-this.radius, -this.radius);
+            this.drawWheel();
+            this.ctx.restore();
+        }
+
+        startSpin() {
+            this.spinAngleStart = Math.random() * 10 + 10;
+            this.spinTime = 0;
+            this.spinTimeTotal = Math.random() * 3 + 4 * 1000;
+            this.rotateWheel();
+        }
     }
-
-    function stopRotateWheel() {
-        const degrees = startAngle * 180 / Math.PI + 90;
-        const arcd = Math.PI / (comedyClubs.length / 2);
-        const index = Math.floor((360 - degrees % 360) / (arcd * 180 / Math.PI));
-        ctx.save();
-        ctx.font = 'bold 30px Helvetica, Arial';
-        const text = comedyClubs[index];
-        resultDisplay.innerText = `You landed on: ${text}`;
-        ctx.restore();
-    }
-
-    function easeOut(t, b, c, d) {
-        const ts = (t /= d) * t;
-        const tc = ts * t;
-        return b + c * (tc + -3 * ts + 3 * t);
-    }
-
-    function drawRotatedWheel() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.save();
-        ctx.translate(radius, radius);
-        ctx.rotate(startAngle);
-        ctx.translate(-radius, -radius);
-        drawWheel();
-        ctx.restore();
-    }
-
-    spinButton.addEventListener('click', () => {
-        if (comedyClubs.length === 0) return;
-        spinAngleStart = Math.random() * 10 + 10;
-        spinTime = 0;
-        spinTimeTotal = Math.random() * 3 + 4 * 1000;
-        rotateWheel();
-    });
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const comedyClubs = [
-            "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
-            "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
-            "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
-        ];
-
-        const wheel = new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
-    });
-
 
     class TaskManager {
         constructor(taskListId, wheel) {
@@ -241,18 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
             this.wheel.drawWheel();
         }
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const comedyClubs = [
-            "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
-            "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
-            "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
-        ];
-
-        const wheel = new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
-        new TaskManager('taskList', wheel);
-    });
-
 
     class ImageModalGallery {
         constructor(imageContainerId, modalId, videoFrameId, prevBtnId, nextBtnId, closeBtnClass, images) {
@@ -338,21 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const images = [
-            { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
-            { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
-            { src: "Graham Norton.jpg", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
-            { src: "Aisling Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/watch?v=DAiIUbSt-eM", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
-            { src: "David O'Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/watch?v=TRHS0pN6oC0", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
-            { src: "Ardal O'Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/watch?v=6B--cjte5P4", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
-            { src: "Ed Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=8gxb4e6gInU", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
-        ];
-
-        new ImageModalGallery('imageContainer', 'videoModal', 'videoFrame', 'prevBtn', 'nextBtn', '.modal .close', images);
-    });
-
-
     class FormValidator {
         constructor(formId, resultDivId) {
             this.form = document.getElementById(formId);
@@ -396,10 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        new FormValidator('myForm', 'result');
-    });
-
     class AuthManager {
         constructor(loginLinkId, registerLinkId, logoutLinkId, userLoggedIn) {
             this.loginLink = document.getElementById(loginLinkId);
@@ -423,67 +313,94 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const userLoggedIn = true;
-        new AuthManager('login-link', 'register-link', 'logout-link', userLoggedIn);
-    });
+    // Initialization
+    const comedyClubs = [
+        "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
+        "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
+        "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
+    ];
 
+    const wheel = new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
+    new TaskManager('taskList', wheel);
 
-    class AuthManager {
-        constructor(loginLinkId, registerLinkId, logoutLinkId, userLoggedIn) {
-            this.loginLink = document.getElementById(loginLinkId);
-            this.registerLink = document.getElementById(registerLinkId);
-            this.logoutLink = document.getElementById(logoutLinkId);
-            this.userLoggedIn = userLoggedIn;
+    const images = [
+        { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
+        { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
+        { src: "Graham Norton.jpg", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
+        { src: "Aisling Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/watch?v=DAiIUbSt-eM", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
+        { src: "David O'Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/watch?v=TRHS0pN6oC0", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
+        { src: "Ardal O'Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/watch?v=6B--cjte5P4", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
+        { src: "Ed Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=8gxb4e6gInU", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
+    ];
 
-            this.updateAuthState();
-        }
+    new ImageModalGallery('imageContainer', 'videoModal', 'videoFrame', 'prevBtn', 'nextBtn', '.modal .close', images);
+    new FormValidator('myForm', 'result');
 
-        updateAuthState() {
-            if (this.userLoggedIn) {
-                this.loginLink.style.display = 'none';
-                this.registerLink.style.display = 'none';
-                this.logoutLink.style.display = 'inline-block';
-            } else {
-                this.loginLink.style.display = 'inline-block';
-                this.registerLink.style.display = 'inline-block';
-                this.logoutLink.style.display = 'none';
-            }
-        }
-    }
+    const userLoggedIn = true;
+    new AuthManager('login-link', 'register-link', 'logout-link', userLoggedIn);
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const userLoggedIn = true;
-        new AuthManager('login-link', 'register-link', 'logout-link', userLoggedIn);
-    });
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const comedyClubs = [
-            "The Comedy Cellar", "The Laughter Lounge", "The International Comedy Club",
-            "The Empire Comedy Club", "The Roisin Dubh Comedy Club", "The Bankers Comedy Club",
-            "Cherry Comedy", "The Comedy Crunch", "The Empire Laughs Back", "Anseo Comedy Club"
-        ];
-
-        const wheel = new SpinningWheel('wheelCanvas', 'spinButton', 'result', comedyClubs);
-        new TaskManager('taskList', wheel);
-
-        const images = [
-            { src: "daraobriain.jpg", alt: "Dara Ó Briain", video: "https://www.youtube.com/embed/Gz7OzGpSRnw", bio: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect." },
-            { src: "Tommy-Tiernan.jpg", alt: "Tommy Tiernan", video: "https://www.youtube.com/embed/8fKVPtn-szk", bio: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style." },
-            { src: "Graham Norton.jpg", alt: "Graham Norton", video: "https://www.youtube.com/embed/1U-amrqqCKw", bio: "Graham Norton is an Irish television and radio presenter, known for his popular talk show." },
-            { src: "Aisling Bea.jpg", alt: "Aisling Bea", video: "https://www.youtube.com/watch?v=DAiIUbSt-eM", bio: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills." },
-            { src: "David O'Doherty.jpg", alt: "David O'Doherty", video: "https://www.youtube.com/watch?v=TRHS0pN6oC0", bio: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy." },
-            { src: "Ardal O'Hanlon.jpg", alt: "Ardal O'Hanlon", video: "https://www.youtube.com/watch?v=6B--cjte5P4", bio: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted." },
-            { src: "Ed Byrne.jpg", alt: "Ed Byrne", video: "https://www.youtube.com/watch?v=8gxb4e6gInU", bio: "Ed Byrne is a comedian and actor known for his observational humor." }
-        ];
-
-        new ImageModalGallery('imageContainer', 'videoModal', 'videoFrame', 'prevBtn', 'nextBtn', '.modal .close', images);
-
-        new FormValidator('myForm', 'result');
-
-        const userLoggedIn = true;
-        new AuthManager('login-link', 'register-link', 'logout-link', userLoggedIn);
-    }
-    );
 });
+
+ // Form Submission Balloon Animation
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.textContent = '🎈';
+            document.body.appendChild(balloon);
+
+            const submitButton = form.querySelector('input[type="submit"], button[type="submit"]');
+            const rect = submitButton.getBoundingClientRect();
+            balloon.style.left = `${rect.left + window.scrollX}px`;
+            balloon.style.top = `${rect.top + window.scrollY}px`;
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 5000);
+        });
+    }
+
+    // Back to Top Button Logic
+    const backToTopBtn = document.getElementById("back-to-top");
+
+    if (backToTopBtn) {
+        backToTopBtn.style.position = "fixed";
+        backToTopBtn.style.bottom = "20px";
+        backToTopBtn.style.left = "20px";  // Adjusting to the left
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+    }
+
+    // Show or hide the back-to-top button on load
+    if (backToTopBtn) {
+        if (window.scrollY > 300) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    }
+});
+
+// Flip Effects Initialization Function
+function initializeFlipEffects() {
+    const flipContainers = document.querySelectorAll('.flip-container');
+
+    flipContainers.forEach(container => {
+        container.addEventListener('click', () => {
+            container.classList.toggle('flip');
+        });
+    });
+}
