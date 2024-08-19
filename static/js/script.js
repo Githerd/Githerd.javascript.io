@@ -3,24 +3,114 @@ document.addEventListener('DOMContentLoaded', () => {
     function changeBackgroundColor() {
         const colors = [
             "#8C6A5B", "#A9B8B2", "#7A8795", "#A57A8E", "#D1B494", "#88A496",
-            "#837F95", "#8C6A5B", "#9B8CA7", "#96A4B3", "#B6877B", "#A4B8A4",
-            "#6D7D8A", "#8C6A5B", "#A5B897", "#A57A7A", "#8C6A5B", "#837F95",
-            "#7A8795", "#8C6A5B", "#A4B8A4", "#A57A8E", "#D1B494", "#A9B8B2",
-            "#837F95", "#D67D63", "#9B89C7", "#7DA9A2", "#E0B672", "#A85753",
+            "#837F95", "#9B8CA7", "#96A4B3", "#B6877B", "#A4B8A4", "#6D7D8A",
+            "#A5B897", "#D67D63", "#9B89C7", "#7DA9A2", "#E0B672", "#A85753",
             "#9678A9", "#C17058", "#7AA084", "#C87A6F", "#7D8DAA", "#A3CDA2",
-            "#B89CCF", "#E0B672", "#7FD3AB", "#C87896", "#6F87B3", "#D68954",
-            "#8E73B3", "#5EBAB1", "#D396A7", "#A65353", "#B3D69B", "#93AAD7",
-            "#C17058", "#CDE4A1", "#D7A08A", "#7DA9A2", "#ADA8CC", "#79B39B",
-            "#857EBF", "#70D4A4", "#C87A6F", "#7D8DAA", "#C17058", "#D1A7C4",
-            "#9FBEDC", "#9B89C7", "#A3CDA2", "#D78FD7", "#A8D5D7", "#DDAA77"
+            "#B89CCF", "#7FD3AB", "#C87896", "#6F87B3", "#D68954", "#8E73B3",
+            "#5EBAB1", "#D396A7", "#B3D69B", "#93AAD7", "#CDE4A1", "#D7A08A",
+            "#ADA8CC", "#79B39B", "#857EBF", "#70D4A4", "#D1A7C4", "#9FBEDC",
+            "#D78FD7", "#A8D5D7", "#DDAA77"
         ];
 
         const randomIndex = Math.floor(Math.random() * colors.length);
         document.body.style.backgroundColor = colors[randomIndex];
     }
 
-    setInterval(changeBackgroundColor, 3000); // Change every 3 seconds
+    setInterval(changeBackgroundColor, 2000); // Change every 2 seconds
 
+    // Handling comedian display
+    const btn = document.getElementById("btn");
+    const projectDisplay = document.getElementById('project-display');
+
+    if (btn && projectDisplay) {
+        const comedians = [
+            {
+                title: "Dara Ó Briain",
+                image: "{{ url_for('static', filename='daraobriain.jpg') }}",
+                description: "Dara Ó Briain is an Irish comedian and television presenter, known for his witty humor and sharp intellect.",
+                video: "https://www.youtube.com/embed/Gz7OzGpSRnw"
+            },
+            {
+                title: "Tommy Tiernan",
+                image: "{{ url_for('static', filename='Tommy-Tiernan.jpg') }}",
+                description: "Tommy Tiernan is an Irish comedian, actor, and writer, celebrated for his unique storytelling style.",
+                video: "https://www.youtube.com/embed/8fKVPtn-szk"
+            },
+            {
+                title: "Ardal O'Hanlon",
+                image: "{{ url_for('static', filename='Ardal-O-Hanlon.jpg') }}",
+                description: "Ardal O'Hanlon is an Irish comedian and actor, best known for his role in the sitcom Father Ted.",
+                video: "https://www.youtube.com/watch?v=6B--cjte5P4"
+            },
+            {
+                title: "Ed Byrne",
+                image: "{{ url_for('static', filename='Ed-Byrne.jpg') }}",
+                description: "Ed Byrne is a comedian and actor known for his observational humor.",
+                video: "https://www.youtube.com/watch?v=8gxb4e6gInU"
+            },
+            {
+                title: "Graham Norton",
+                image: "{{ url_for('static', filename='Graham-Norton.jpg') }}",
+                description: "Graham Norton is an Irish television and radio presenter, known for his popular talk show.",
+                video: "https://www.youtube.com/watch?v=1U-amrqqCKw"
+            },
+            {
+                title: "Aisling Bea",
+                image: "{{ url_for('static', filename='Aisling-Bea.jpg') }}",
+                description: "Aisling Bea is an Irish comedian, actress, and writer, known for her sharp humor and acting skills.",
+                video: "https://www.youtube.com/watch?v=DAiIUbSt-eM"
+            },
+            {
+                title: "David O'Doherty",
+                image: "{{ url_for('static', filename='David-O-Doherty.jpg') }}",
+                description: "David O'Doherty is an Irish comedian, author, musician, actor, and playwright, recognized for his musical comedy.",
+                video: "https://www.youtube.com/watch?v=TRHS0pN6oC0"
+            }
+        ];
+
+        let currentComedianIndex = 0;
+
+        function displayComedian(index) {
+            const comedian = comedians[index];
+            projectDisplay.innerHTML = `
+                <h2>${comedian.title}</h2>
+                <img src="${comedian.image}" alt="${comedian.title}" class="comedian-image">
+                <p>${comedian.description}</p>
+                <button class="watch-video-button" onclick="openModal('${comedian.video}')">Watch Video</button>
+            `;
+        }
+
+        btn.addEventListener("click", () => {
+            currentComedianIndex = (currentComedianIndex + 1) % comedians.length;
+            displayComedian(currentComedianIndex);
+        });
+
+        displayComedian(currentComedianIndex);
+    }
+
+    // Video Modal
+    const videoModal = document.getElementById("videoModal");
+    const videoFrame = document.getElementById("videoFrame");
+    const closeModalBtn = document.querySelector(".modal .close");
+
+    function openModal(videoUrl) {
+        videoFrame.src = videoUrl;
+        videoModal.style.display = "block";
+    }
+
+    function closeModal() {
+        videoModal.style.display = "none";
+        videoFrame.src = "";
+    }
+
+    closeModalBtn.addEventListener("click", closeModal);
+    window.addEventListener("click", (event) => {
+        if (event.target === videoModal) {
+            closeModal();
+        }
+    });
+
+    // Spinning Wheel functionality
     class SpinningWheel {
         constructor(canvasId, spinButtonId, resultDisplayId, items) {
             this.canvas = document.getElementById(canvasId);
@@ -133,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Task manager
     class TaskManager {
         constructor(taskListId, wheel) {
             this.taskList = document.getElementById(taskListId);
@@ -163,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Image modal gallery
     class ImageModalGallery {
         constructor(imageContainerId, modalId, videoFrameId, prevBtnId, nextBtnId, closeBtnClass, images) {
             this.container = document.getElementById(imageContainerId);
@@ -247,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Form validator
     class FormValidator {
         constructor(formId, resultDivId) {
             this.form = document.getElementById(formId);
@@ -290,6 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Auth manager
     class AuthManager {
         constructor(loginLinkId, registerLinkId, logoutLinkId, userLoggedIn) {
             this.loginLink = document.getElementById(loginLinkId);
