@@ -1,19 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     // Function to change background color
     function changeBackgroundColor() {
         const colors = [
-            "#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#FFBD33", "#33FFBD",
-            "#5733FF", "#FF5733", "#A633FF", "#33A6FF", "#FF3333", "#33FF33",
-            "#3333FF", "#FF5733", "#57FF33", "#FF3357", "#FF5733", "#5733FF",
-            "#3357FF", "#FF5733", "#33FFBD", "#FF33A6", "#FFBD33", "#33FF57",
-            "#5733FF", "#FF7F50", "#6A5ACD", "#20B2AA", "#FFD700", "#DC143C",
-            "#8A2BE2", "#FF4500", "#2E8B57", "#FF6347", "#4682B4", "#32CD32",
-            "#BA55D3", "#FFD700", "#00FA9A", "#FF1493", "#4169E1", "#FF8C00",
-            "#9932CC", "#00CED1", "#FF69B4", "#B22222", "#7FFF00", "#6495ED",
-            "#FF4500", "#ADFF2F", "#FFA07A", "#20B2AA", "#9370DB", "#3CB371",
-            "#7B68EE", "#00FF7F", "#FF6347", "#4682B4", "#FF4500", "#DA70D6",
-            "#87CEEB", "#6A5ACD", "#32CD32", "#FF00FF", "#00FFFF", "#FFA500"
+            "#8C6A5B", "#A9B8B2", "#7A8795", "#A57A8E", "#D1B494", "#88A496",
+            "#837F95", "#8C6A5B", "#9B8CA7", "#96A4B3", "#B6877B", "#A4B8A4",
+            "#6D7D8A", "#8C6A5B", "#A5B897", "#A57A7A", "#8C6A5B", "#837F95",
+            "#7A8795", "#8C6A5B", "#A4B8A4", "#A57A8E", "#D1B494", "#A9B8B2",
+            "#837F95", "#D67D63", "#9B89C7", "#7DA9A2", "#E0B672", "#A85753",
+            "#9678A9", "#C17058", "#7AA084", "#C87A6F", "#7D8DAA", "#A3CDA2",
+            "#B89CCF", "#E0B672", "#7FD3AB", "#C87896", "#6F87B3", "#D68954",
+            "#8E73B3", "#5EBAB1", "#D396A7", "#A65353", "#B3D69B", "#93AAD7",
+            "#C17058", "#CDE4A1", "#D7A08A", "#7DA9A2", "#ADA8CC", "#79B39B",
+            "#857EBF", "#70D4A4", "#C87A6F", "#7D8DAA", "#C17058", "#D1A7C4",
+            "#9FBEDC", "#9B89C7", "#A3CDA2", "#D78FD7", "#A8D5D7", "#DDAA77"
         ];
 
         const randomIndex = Math.floor(Math.random() * colors.length);
@@ -38,12 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             this.spinButton.addEventListener('click', () => this.startSpin());
             this.drawWheel();
+            this.drawPointer(); // Draw the pointer once at initialization
         }
 
         drawWheel() {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             for (let i = 0; i < this.items.length; i++) {
-                const angle = i * this.arc;
+                const angle = this.startAngle + i * this.arc;
                 this.ctx.beginPath();
                 this.ctx.arc(this.radius, this.radius, this.radius, angle, angle + this.arc, false);
                 this.ctx.lineTo(this.radius, this.radius);
@@ -51,17 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.ctx.fill();
                 this.ctx.save();
                 this.ctx.fillStyle = "black";
-                this.ctx.font = 'bold 10px Arial';
+                this.ctx.font = 'bold 12px Arial';
                 this.ctx.translate(
-                    this.radius + Math.cos(angle + this.arc / 2) * this.radius * 0.9,
-                    this.radius + Math.sin(angle + this.arc / 2) * this.radius * 0.9
+                    this.radius + Math.cos(angle + this.arc / 2) * this.radius * 0.7,
+                    this.radius + Math.sin(angle + this.arc / 2) * this.radius * 0.7
                 );
                 this.ctx.rotate(angle + this.arc / 2 + Math.PI / 2);
                 const text = this.items[i];
                 this.ctx.fillText(text, -this.ctx.measureText(text).width / 2, 0);
                 this.ctx.restore();
             }
-            this.drawPointer();
         }
 
         drawPointer() {
@@ -123,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.ctx.translate(-this.radius, -this.radius);
             this.drawWheel();
             this.ctx.restore();
+            this.drawPointer(); // Ensure the pointer is always on top
         }
 
         startSpin() {
@@ -338,69 +338,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const userLoggedIn = true;
     new AuthManager('login-link', 'register-link', 'logout-link', userLoggedIn);
-
 });
-
- // Form Submission Balloon Animation
-    const form = document.querySelector('form');
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const balloon = document.createElement('div');
-            balloon.classList.add('balloon');
-            balloon.textContent = '🎈';
-            document.body.appendChild(balloon);
-
-            const submitButton = form.querySelector('input[type="submit"], button[type="submit"]');
-            const rect = submitButton.getBoundingClientRect();
-            balloon.style.left = `${rect.left + window.scrollX}px`;
-            balloon.style.top = `${rect.top + window.scrollY}px`;
-
-            setTimeout(() => {
-                balloon.remove();
-            }, 5000);
-        });
-    }
-
-    // Back to Top Button Logic
-    const backToTopBtn = document.getElementById("back-to-top");
-
-    if (backToTopBtn) {
-        backToTopBtn.style.position = "fixed";
-        backToTopBtn.style.bottom = "20px";
-        backToTopBtn.style.left = "20px";  // Adjusting to the left
-
-        backToTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
-        });
-    }
-
-    // Show or hide the back-to-top button on load
-    if (backToTopBtn) {
-        if (window.scrollY > 300) {
-            backToTopBtn.style.display = "block";
-        } else {
-            backToTopBtn.style.display = "none";
-        }
-    }
-});
-
-// Flip Effects Initialization Function
-function initializeFlipEffects() {
-    const flipContainers = document.querySelectorAll('.flip-container');
-
-    flipContainers.forEach(container => {
-        container.addEventListener('click', () => {
-            container.classList.toggle('flip');
-        });
-    });
-}
